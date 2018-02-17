@@ -28,7 +28,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: What are the counties of the top 20 California High Schools that had the highest number of total high school graduates?'
+'Research Question: What are the counties of the top 20 California High Schools that had the highest number total high school graduates?'
 ;
 
 title2
