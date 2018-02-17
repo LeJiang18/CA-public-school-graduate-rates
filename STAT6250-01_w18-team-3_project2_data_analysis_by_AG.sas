@@ -45,7 +45,6 @@ and create a new variable called Total_Graduates_Rate_Change. After, use proc
 sort to create a temporary sorted table in descending order by
 Total_Graduates_Rate_Change and then proc print to display the first ten rows
 of the sorted dataset
-
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
 students it instructs which could increase the amount of graduates even if
@@ -81,7 +80,6 @@ title2
 Methodology: Use PROC PRINT to print out the first twenty observations
 for the GRADRATE column in the temporary dataset created in the data prep file. 
 Then compare the graduation rates.
-
 Limitations: This doesn't take into account total number of students. It's
 possible a school could have a low total number of students so it would 
 have an better chance of having a higher graduation rate.
@@ -115,7 +113,6 @@ title2
 Methodology: Use proc means to find the sum for the columns D9, D10, D11, and 
 D12 in the Graduates_analytic_file file created in data.
 preparation. Then see which one has the highest number.
-
 Limitations: None
 Followup Steps: See which high schools have the highest number of dropouts,
 which would demonstrate that these schools maybe need to improve their
