@@ -42,9 +42,9 @@ name from Grads1415.
 *
 Methodology: When combining the files Grads1314 and Grads1415 in data
 preparation, take the difference of values of the column WHITE for each school
-and create a new variable called Total_Graduates_Rate_Change. After, use proc
+and create a new variable called Total_Graduation. After, use proc
 sort to create a temporary sorted table in descending order by
-Total_Graduates_Rate_Change and then proc print to display the first ten rows
+Total_Graduation and then proc print to display the first ten rows
 of the sorted dataset
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
@@ -55,7 +55,7 @@ the schools in terms of total graduates.
 ;
 
 proc print 
-        data=Graduates_analytic_file_Total(obs=20)
+        data=Graduates_analytic_file_Total
     ;
     id 
         CDS_CODE
@@ -70,20 +70,19 @@ run;
 *******************************************************************************;
 
 title1
-'Research Question: What are the top 20 schools with the highest graduation rate?'
+'Research Question: What is the percentage of dropouts compared to graduates?'
 ;
 
 title2
-'Rationale: These schools would be interesting to research to see why they have the highest graduation rate.'
+'Rationale: This would generate a ranking of schools based on dropouts vs. graduation.'
 ;
 
 *
-Methodology: Use PROC PRINT to print out the first twenty observations
-for the GRADRATE column in the temporary dataset created in the data prep file. 
-Then compare the graduation rates.
-Limitations: This doesn't take into account total number of students. It's
-possible a school could have a low total number of students so it would 
-have an better chance of having a higher graduation rate.
+Methodology: Use PROC PRINT to print out the percentage of dropouts from 
+GradRates file using columnsD9,D10,D11,D12 in the temporary dataset created 
+in the data prep file. Then compare the dropout vs. graduation rates.
+Limitations: This data is for only 1 academic year. This does not give us an
+overall idea 
 Followup Steps: Check the bottom ten schools with the lowest gradution rates.
 ;
 
@@ -103,11 +102,11 @@ run;
 *******************************************************************************;
 
 title1
-'Research Question: Which grade has the highest number of dropouts?'
+'Research Question:vWhat is the number of schools in each county? ?'
 ;
 
 title2
-'Rationale: This is important to know since then we would know which grade to target the most with counseling or help from teachers.'
+'Rationale: Rationale: Get a population estimate of graduating students in each county so as to acquire related resources.'
 ;
 
 *
