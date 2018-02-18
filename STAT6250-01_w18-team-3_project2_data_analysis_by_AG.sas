@@ -28,7 +28,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: What are the counties of the top 20 California High Schools that had the highest number total high school graduates?'
+'Research Question: What are the counties of the top 10 California High Schools that had the highest number total high school graduates?'
 ;
 
 title2
@@ -46,10 +46,12 @@ and create a new variable called Total_Graduates_Rate_Change.
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
 students.
+
+Followup Steps:
 ;
 
 proc print 
-        data=Graduates_analytic_file_Total(obs=20)
+        data=Graduates_analytic_file_Total(obs=10)
     ;
     id 
         CDS_CODE
@@ -64,7 +66,7 @@ run;
 *******************************************************************************;
 
 title1
-'Research Question: What are the top 20 schools with the highest graduation rate?'
+'Research Question: What are the top 10 schools with the highest graduation rate?'
 ;
 
 title2
@@ -72,7 +74,7 @@ title2
 ;
 
 *
-Methodology: Use PROC PRINT to print out the first twenty observations
+Methodology: Use PROC PRINT to print out the first ten observations
 for the GRADRATE column in the temporary dataset created in the data prep file. 
 Then compare the graduation rates.
 
