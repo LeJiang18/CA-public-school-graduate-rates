@@ -79,11 +79,12 @@ title2
 
 *
 Methodology: Use PROC PRINT to print out the percentage of dropouts from 
-GradRates file using columnsD9,D10,D11,D12 in the temporary dataset created 
+GradRates file using columns D9,D10,D11,D12 in the temporary dataset created 
 in the data prep file. Then compare the dropout vs. graduation rates.
 Limitations: This data is for only 1 academic year. This does not give us an
 overall idea 
-Followup Steps: Check the bottom ten schools with the lowest gradution rates.
+Followup Steps: Check the bottom ten schools with the highest dropout rates
+and take steps to bring down the rate.
 ;
 
 proc print 
@@ -102,7 +103,7 @@ run;
 *******************************************************************************;
 
 title1
-'Research Question:vWhat is the number of schools in each county? ?'
+'Research Question: What is the number of schools in each county? ?'
 ;
 
 title2
@@ -110,24 +111,24 @@ title2
 ;
 
 *
-Methodology: Use proc means to find the sum for the columns D9, D10, D11, and 
-D12 in the Graduates_analytic_file file created in data.
-preparation. Then see which one has the highest number.
+Methodology: Use PROC PRINT to print out the sum of the number of schools
+per county in the Graduates_analytic_file file created in data.
+
 Limitations: None
-Followup Steps: See which high schools have the highest number of dropouts,
-which would demonstrate that these schools maybe need to improve their
-teaching/counseling services or something.
+Followup Steps: See which county has highest number of schools and focus
+resources on the ones which have lowest number of schools to increase
+numbers of schools and eventually students.
 ;
 
 proc means 
-        data=Graduates_analytic_file
+        data=Graduates_analytic_file_high
         sum
     ;
     id
         CDS_CODE
     ;
     var
-        D9 D10 D11 D12
+        COUNTY
     ;
 run;
 ;
