@@ -8,7 +8,7 @@ This file uses the following analytic dataset to address several research
 questions regarding graduation numbers and rates for various California High
 Schools
 Dataset Name: Graduates_analytic_file created in external file
-STAT6250-02_w18-team-3_project2_data_preparation.sas, which is assumed to be
+STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
 See included file for dataset properties
 ;
@@ -65,21 +65,23 @@ run;
 *******************************************************************************;
 
 title1
-'Research Question: What is the percentage of dropouts compared to graduates?'
+'Research Question: What is the number of hispanic students graduated in 2 years county wise?'
 ;
 
 title2
-'Rationale: This would generate a ranking of schools based on dropouts vs. graduation.'
+'Rationale: This would generate a population estimate of graduating hispanic students depending on each county.'
 ;
 
 *
-Methodology: Use PROC PRINT to print out the percentage of dropouts from 
-GradRates file using columns D9,D10,D11,D12 in the temporary dataset created 
-in the data prep file. Then compare the dropout vs. graduation rates.
-Limitations: This data is for only 1 academic year. This does not give us an
-overall idea 
-Followup Steps: Check the bottom ten schools with the highest dropout rates
-and take steps to bring down the rate.
+Methodology: Use PROC SQL to find the sum of hispanic students of both years
+using the combined dataset and then group by counties to get an estimate of
+student distribution over different county.
+Limitations: We can't find out percentage of hispanic students graduating 
+with top scores.We can only assume they graduate without knowing their
+scores.
+Followup Steps: Check the counties with the highest number of student
+graduation rates and check to see if they graduate with high percentage
+or just graduate.
 ;
 
 proc print 
