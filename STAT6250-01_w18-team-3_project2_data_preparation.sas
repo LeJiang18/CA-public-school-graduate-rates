@@ -312,3 +312,13 @@ proc sql;
 	from r1 where county="Alameda" 
 	group by county,year;
 quit;
+
+*use proc sql to find the number of hispanic students
+graduated in 2 years county wise to get a population
+estimate of concentration hispanic students
+in each county
+
+proc sql;
+	select county,sum(hispanic) as Hispanic_stud_grad
+	from r1 group by county;
+quit;
