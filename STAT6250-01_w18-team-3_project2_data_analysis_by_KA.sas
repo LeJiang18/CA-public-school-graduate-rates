@@ -49,16 +49,11 @@ Followup Steps: Possibly check if the total number of students increased for
 the county in terms of total students enrolled.
 ;
 
-proc print 
-        data=Graduates_analytic_file_Total
-    ;
-    id 
-        CDS_CODE
-    ;
-    var 
-        SCHOOL COUNTY GRADRATE TOTAL
-    ;
-run; 
+proc sql;
+	select county,year,sum(white)as Total_White_Students
+	from r1 where county="Alameda" 
+	group by county,year;
+quit;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -84,16 +79,10 @@ graduation rates and check to see if they graduate with high percentage
 or just graduate.
 ;
 
-proc print 
-        data=Graduates_analytic_file_GradRate(obs=20)
-    ;
-    id 
-        CDS_CODE
-    ;
-    var 
-        SCHOOL GRADRATE
-    ;
-run;
+proc sql;
+	select county,sum(hispanic) as Hispanic_stud_grad
+	from r1 group by county;
+quit;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
