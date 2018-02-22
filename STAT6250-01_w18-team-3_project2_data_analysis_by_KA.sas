@@ -29,29 +29,26 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: What is the difference of white students graduating compared to all students in each year?'
+'Research Question: What is the number of white students graduating in Alameda in each year?'
 ;
 
 title2
-'Rationale: This help identifies the progress of students in terms of education depending on their ethnicity.'
+'Rationale: This help identifies the progress of students in terms of education on a yearly basis.'
 ;
 
 
-*Note: This compares the column "WHITE" from Grads1314to the column of the same 
-name from Grads1415.
+
 *
-Methodology: When combining the files Grads1314 and Grads1415 in data
-preparation, take the difference of values of the column WHITE for each school
-and create a new variable called Total_Graduation. After, use proc
-sort to create a temporary sorted table in descending order by
-Total_Graduation and then proc print to display the first ten rows
-of the sorted dataset
+Methodology: When combining the files Grads1314 and Grads1415 in data,
+select the sum of white students graduated each year and group by Alameda
+county and year.
+
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
 students it instructs which could increase the amount of graduates even if
 it's at a lower rate.
-Followup Steps: Possibly check if the total number of graduates increased for
-the schools in terms of total graduates.
+Followup Steps: Possibly check if the total number of students increased for
+the county in terms of total students enrolled.
 ;
 
 proc print 
