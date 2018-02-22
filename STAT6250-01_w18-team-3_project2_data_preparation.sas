@@ -146,11 +146,7 @@ https://github.com/stat6250/team-3_project2/blob/project02/data/GradRates.xlsx?r
     &inputDataset3URL.,
     &inputDataset3Type.
 )
-%loadDataIfNotAlreadyAvailable(
-    &inputDataset4DSN.,
-    &inputDataset4URL.,
-    &inputDataset4Type.
-)
+
 
 
 * sort and check raw datasets for duplicates with respect to their unique ids,
@@ -301,3 +297,20 @@ proc sort
     ;
     by descending excess_sat_takers;
 run;
+
+*combine datasets and use proc sql to calculate total number
+of white students graduating in alameda county in each of
+the 2 years;
+
+data r1;
+	merge grads1314_raw_sorted grads1415_raw_sorted;
+	by YEAR;
+run;
+
+
+*use proc sql to find the number of hispanic students
+graduated in 2 years county wise to get a population
+estimate of concentration hispanic students
+in each county;
+
+

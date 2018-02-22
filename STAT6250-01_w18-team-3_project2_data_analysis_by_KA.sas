@@ -9,7 +9,12 @@ questions regarding graduation numbers and rates for various California High
 Schools
 
 Dataset Name: Graduates_analytic_file created in external file
+STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
+
+
+Dataset Name: Graduates_analytic_file created in external file
 STAT6250-02_w18-team-3_project2_data_preparation.sas, which is assumed to be
+
 in the same directory as this file
 See included file for dataset properties
 ;
@@ -42,7 +47,6 @@ title2
 Methodology: When combining the files Grads1314 and Grads1415 in data,
 select the sum of white students graduated each year and group by Alameda
 county and year.
-
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
 students it instructs which could increase the amount of graduates even if
@@ -51,22 +55,44 @@ Followup Steps: Possibly check if the total number of students increased for
 the county in terms of total students enrolled.
 ;
 
-proc print 
-        data=Graduates_analytic_file_Total
-    ;
-    id 
-        CDS_CODE
-    ;
-    var 
-        SCHOOL COUNTY GRADRATE TOTAL
-    ;
-run; 
+
+proc sql;
+	select county,year,sum(white)as Total_White_Students
+	from r1 where county="Alameda" 
+	group by county,year;
+quit;
+
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
 title1
+'Research Question: What is the number of hispanic students graduated in 2 years county wise?'
+;
+
+title2
+'Rationale: This would generate a population estimate of graduating hispanic students depending on each county.'
+;
+
+*
+Methodology: Use PROC SQL to find the sum of hispanic students of both years
+using the combined dataset and then group by counties to get an estimate of
+student distribution over different county.
+Limitations: We can't find out percentage of hispanic students graduating 
+with top scores.We can only assume they graduate without knowing their
+scores.
+Followup Steps: Check the counties with the highest number of student
+graduation rates and check to see if they graduate with high percentage
+or just graduate.
+;
+
+proc sql;
+	select county,sum(hispanic) as Hispanic_stud_grad
+	from r1 group by county;
+quit;
+=======
 'Research Question: What is the percentage of dropouts compared to graduates?'
 ;
 
@@ -79,7 +105,7 @@ Methodology: Use PROC PRINT to print out the percentage of dropouts from
 GradRates file using columns D9,D10,D11,D12 in the temporary dataset created 
 in the data prep file. Then compare the dropout vs. graduation rates.
 Limitations: This data is for only 1 academic year. This does not give us an
-overall idea 
+overall idea.
 Followup Steps: Check the bottom ten schools with the highest dropout rates
 and take steps to bring down the rate.
 ;
@@ -94,6 +120,7 @@ proc print
         SCHOOL GRADRATE
     ;
 run;
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -110,7 +137,6 @@ title2
 *
 Methodology: Use PROC PRINT to print out the sum of the number of schools
 per county in the Graduates_analytic_file file created in data.
-
 Limitations: None
 Followup Steps: See which county has highest number of schools and focus
 resources on the ones which have lowest number of schools to increase
