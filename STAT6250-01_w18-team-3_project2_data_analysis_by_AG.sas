@@ -8,7 +8,7 @@ This file uses the following analytic dataset to address several research
 questions regarding graduation numbers and rates for various California High
 Schools
 Dataset Name: Graduates_analytic_file created in external file
-STAT6250-02_w18-team-3_project2_data_preparation.sas, which is assumed to be
+STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
 See included file for dataset properties
 ;
@@ -28,7 +28,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: What are the counties of the top 20 California High Schools that had the highest number total high school graduates?'
+'Research Question: What are the counties of the top 10 California High Schools that had the highest number total high school graduates?'
 ;
 
 title2
@@ -41,20 +41,17 @@ name from Grads1415.
 *
 Methodology: When combining the files Grads1314 and Grads1415 in data
 preparation, take the difference of values of the column Total for each school
-and create a new variable called Total_Graduates_Rate_Change. After, use proc
-sort to create a temporary sorted table in descending order by
-Total_Graduates_Rate_Change and then proc print to display the first ten rows
-of the sorted dataset
+and create a new variable called Total_Graduates_Rate_Change.
+
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
-students it instructs which could increase the amount of graduates even if
-it's at a lower rate.
-Followup Steps: Possibly check if the total number of graduates increased for
-the bottom ten schools in terms of total graduates.
+students.
+
+Followup Steps:
 ;
 
 proc print 
-        data=Graduates_analytic_file_Total(obs=20)
+        data=Graduates_analytic_file_Total(obs=10)
     ;
     id 
         CDS_CODE
@@ -69,7 +66,7 @@ run;
 *******************************************************************************;
 
 title1
-'Research Question: What are the top 20 schools with the highest graduation rate?'
+'Research Question: What are the top 10 schools with the highest graduation rate?'
 ;
 
 title2
@@ -77,12 +74,14 @@ title2
 ;
 
 *
-Methodology: Use PROC PRINT to print out the first twenty observations
+Methodology: Use PROC PRINT to print out the first ten observations
 for the GRADRATE column in the temporary dataset created in the data prep file. 
 Then compare the graduation rates.
+
 Limitations: This doesn't take into account total number of students. It's
 possible a school could have a low total number of students so it would 
 have an better chance of having a higher graduation rate.
+
 Followup Steps: Check the bottom ten schools with the lowest gradution rates.
 ;
 
@@ -113,7 +112,9 @@ title2
 Methodology: Use proc means to find the sum for the columns D9, D10, D11, and 
 D12 in the Graduates_analytic_file file created in data.
 preparation. Then see which one has the highest number.
+
 Limitations: None
+
 Followup Steps: See which high schools have the highest number of dropouts,
 which would demonstrate that these schools maybe need to improve their
 teaching/counseling services or something.

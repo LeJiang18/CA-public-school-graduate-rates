@@ -7,8 +7,14 @@
 This file uses the following analytic dataset to address several research
 questions regarding graduation numbers and rates for various California High
 Schools
+
 Dataset Name: Graduates_analytic_file created in external file
 STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
+
+
+Dataset Name: Graduates_analytic_file created in external file
+STAT6250-02_w18-team-3_project2_data_preparation.sas, which is assumed to be
+
 in the same directory as this file
 See included file for dataset properties
 ;
@@ -49,11 +55,14 @@ Followup Steps: Possibly check if the total number of students increased for
 the county in terms of total students enrolled.
 ;
 
+
 proc sql;
 	select county,year,sum(white)as Total_White_Students
 	from r1 where county="Alameda" 
 	group by county,year;
 quit;
+
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -83,6 +92,35 @@ proc sql;
 	select county,sum(hispanic) as Hispanic_stud_grad
 	from r1 group by county;
 quit;
+=======
+'Research Question: What is the percentage of dropouts compared to graduates?'
+;
+
+title2
+'Rationale: This would generate a ranking of schools based on dropouts vs. graduation.'
+;
+
+*
+Methodology: Use PROC PRINT to print out the percentage of dropouts from 
+GradRates file using columns D9,D10,D11,D12 in the temporary dataset created 
+in the data prep file. Then compare the dropout vs. graduation rates.
+Limitations: This data is for only 1 academic year. This does not give us an
+overall idea.
+Followup Steps: Check the bottom ten schools with the highest dropout rates
+and take steps to bring down the rate.
+;
+
+proc print 
+        data=Graduates_analytic_file_GradRate(obs=20)
+    ;
+    id 
+        CDS_CODE
+    ;
+    var 
+        SCHOOL GRADRATE
+    ;
+run;
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
