@@ -301,3 +301,18 @@ proc sort
     ;
     by descending excess_sat_takers;
 run;
+
+*combine datasets and use proc sql to calculate total number
+of white students graduating in alameda county in each of
+the 2 years;
+
+data r1;
+	merge grads1314_raw_sorted grads1415_raw_sorted;
+	by YEAR;
+run;
+
+proc sql;
+	select county,year,sum(white)as Total_White_Students
+	from r1 where county="Alameda" 
+	group by county,year;
+quit;
