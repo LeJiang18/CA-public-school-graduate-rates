@@ -316,7 +316,7 @@ quit;
 *use proc sql to find the number of hispanic students
 graduated in 2 years county wise to get a population
 estimate of concentration hispanic students
-in each county
+in each county;
 
 proc sql;
 	select county,sum(hispanic) as Hispanic_stud_grad
