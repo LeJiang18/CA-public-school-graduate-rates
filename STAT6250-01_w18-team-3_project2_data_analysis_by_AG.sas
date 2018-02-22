@@ -29,23 +29,24 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: What are the counties of the top 20 California High Schools that had the highest number of total high school graduates?'
+'Research Question: What are the top five California High Schools that experienced the biggest increase in total number of graduates between 2013-2014 and 2014-2015?'
 ;
 
 title2
-'Rationale: This would show which counties have the highest populations in California.'
+'Rationale: This would be interesting to find out to see if more students are graduating from high school as years go by.'
 ;
 
 footnote1
-'Most of the counties found in the top 20 are from Southern California, specifically Los Angeles, Orange, and Riverside.'
+'The top five California High Schools are: California School for the Blind, Alameda High, Argonaut High, Forest Charter, and Vantage Point Charter.'
 ;
 
 footnote2
-'This demonstrates that these counties have the highest populations since they have the highest total numbers of graduates while also having high graduate rates. And this makes sense since Los Angeles is one of the most populous cities in the nation.'
+'This shows that these schools really improved their graduation rates and they would be good schools to study for other schools wishing to increase their graduation rates.'
 ;
 
-*Note: This compares the column "Total" from Grads1314to the column of the same 
+Note: This compares the column "Total" from Grads1314to the column of the same 
 name from Grads1415.
+
 *
 Methodology: When combining the files Grads1314 and Grads1415 in data
 preparation, take the difference of values of the column Total for each school
@@ -62,13 +63,13 @@ the bottom ten schools in terms of total graduates.
 ;
 
 proc print 
-        data=Graduates_analytic_file_Total(obs=20)
+        data=Graduates_analytic_file_sorted(obs=10)
     ;
     id 
         CDS_CODE
     ;
     var 
-        SCHOOL COUNTY GRADRATE TOTAL
+        Total_Graduates_Rate_Change
     ;
 run; 
 title;
@@ -79,19 +80,19 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question: What are the top 20 schools with the highest graduation rate?'
+'Research Question: What are the top five schools with the highest graduation rate?'
 ;
 
 title2
-'Rationale: These schools would be interesting to research to see why they have the highest graduation rate.'
+'Rationale: These schools would be interesting to research to see why they have the highest graduation rate, and maybe try out some of their teaching techniques on other schools that don’t have as high of a graduation rate.'
 ;
 
 footnote1
-'These schools have extremely high graduation rates, very close to 100%. These schools are the best at making sure their students graduate.'
+'The top five schools are: Magnolia High, Sycamore Junior High, Woodbury High, Edison High, and Grizzly Hill.'
 ;
 
 footnote2
-'They should be researched to see if they use any interesting stratagies to make this happen and it could be a good idea to try out some of their teaching techniques on other schools that do not have as high of a graduation rate.'
+'These five schools are the best at making sure their students graduate. They should be researched to see if they use any interesting stratagies for this.'
 ;
 
 *
@@ -105,7 +106,7 @@ Followup Steps: Check the bottom ten schools with the lowest gradution rates.
 ;
 
 proc print 
-        data=Graduates_analytic_file_GradRate(obs=20)
+        data=Graduates_analytic_file(obs=20)
     ;
     id 
         CDS_CODE
@@ -130,11 +131,11 @@ title2
 ;
 
 footnote1
-'The grade with the highest number of dropouts was grade 12.'
+'The grade with the highest number of dropouts was grade 9.'
 ;
 
 footnote2
-'This shows that seniors are most likely to drop out of any high school grade. It is surprising that the grade so close to graduating is the one with the most drop outs. Schools might need to target this grade with extra counseling to ensure that they graduate.'
+'This shows that we need to start early with counseling and making sure students are focused from an early age.'
 ;
 
 *
