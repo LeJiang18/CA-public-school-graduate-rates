@@ -23,25 +23,44 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT6250-01_w18-team-3_project2_data_preparation.sas'
 
 
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
 title1
+
+'Research Question: What are the top five California High Schools that experienced the biggest increase in total number of graduates between 2013-2014 and 2014-2015?'
+=======
 'Research Question: What are the counties of the top 10 California High Schools that had the highest number total high school graduates?'
+
 ;
 
 title2
-'Rationale: This would show which counties have the highest populations in California.'
+'Rationale: This would be interesting to find out to see if more students are graduating from high school as years go by.'
 ;
 
+footnote1
+'The top five California High Schools are: California School for the Blind, Alameda High, Argonaut High, Forest Charter, and Vantage Point Charter.'
+;
 
-*Note: This compares the column "Total" from Grads1314to the column of the same 
+footnote2
+'This shows that these schools really improved their graduation rates and they would be good schools to study for other schools wishing to increase their graduation rates.'
+;
+
+Note: This compares the column "Total" from Grads1314to the column of the same 
 name from Grads1415.
+
 *
 Methodology: When combining the files Grads1314 and Grads1415 in data
 preparation, take the difference of values of the column Total for each school
+
+and create a new variable called Total_Graduates_Rate_Change. After, use proc
+sort to create a temporary sorted table in descending order by
+Total_Graduates_Rate_Change and then proc print to display the first ten rows
+of the sorted dataset.
 and create a new variable called Total_Graduates_Rate_Change.
+
 
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
@@ -51,26 +70,44 @@ Followup Steps:
 ;
 
 proc print 
+
+        data=Graduates_analytic_file_sorted(obs=10)
+
         data=Graduates_analytic_file_Total(obs=10)
+        
     ;
     id 
         CDS_CODE
     ;
     var 
-        SCHOOL COUNTY GRADRATE TOTAL
+        Total_Graduates_Rate_Change
     ;
 run; 
+title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
 title1
+
+'Research Question: What are the top five schools with the highest graduation rate?'
+=======
 'Research Question: What are the top 10 schools with the highest graduation rate?'
+
 ;
 
 title2
-'Rationale: These schools would be interesting to research to see why they have the highest graduation rate.'
+'Rationale: These schools would be interesting to research to see why they have the highest graduation rate, and maybe try out some of their teaching techniques on other schools that don’t have as high of a graduation rate.'
+;
+
+footnote1
+'The top five schools are: Magnolia High, Sycamore Junior High, Woodbury High, Edison High, and Grizzly Hill.'
+;
+
+footnote2
+'These five schools are the best at making sure their students graduate. They should be researched to see if they use any interesting stratagies for this.'
 ;
 
 *
@@ -86,7 +123,7 @@ Followup Steps: Check the bottom ten schools with the lowest gradution rates.
 ;
 
 proc print 
-        data=Graduates_analytic_file_GradRate(obs=20)
+        data=Graduates_analytic_file(obs=20)
     ;
     id 
         CDS_CODE
@@ -95,6 +132,8 @@ proc print
         SCHOOL GRADRATE
     ;
 run;
+title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -106,6 +145,14 @@ title1
 
 title2
 'Rationale: This is important to know since then we would know which grade to target the most with counseling or help from teachers.'
+;
+
+footnote1
+'The grade with the highest number of dropouts was grade 9.'
+;
+
+footnote2
+'This shows that we need to start early with counseling and making sure students are focused from an early age.'
 ;
 
 *
@@ -131,4 +178,8 @@ proc means
         D9 D10 D11 D12
     ;
 run;
+
+title;
+footnote;
+=======
 ;
