@@ -49,21 +49,20 @@ name from Grads1415.
 
 *
 Methodology: When combining the files Grads1314 and Grads1415 in data
-preparation, take the difference of values of the column Total for each school
-and create a new variable called Total_Graduates_Rate_Change. After, use proc
+preparation,we take the difference of values of the column Total for each school
+and create a new variable called Total Graduates Rate Change, and then, use proc
 sort to create a temporary sorted table in descending order by
-Total_Graduates_Rate_Change and then proc print to display the first ten rows
+Total Graduates Rate Change after that we use proc print to display the first ten rows
 of the sorted dataset.
-Limitations: We don't really know if schools kept the same amount of students 
-per year. It's possible that a school could have increased the number of
-students it instructs which could increase the amount of graduates even if
-it's at a lower rate.
-Followup Steps: Possibly check if the total number of graduates increased for
-the bottom ten schools in terms of total graduates.
+Limitations: We don't really know if schools have the same numberof students 
+per year, It can be possible that a school could have increased the number of
+students and have same number of graduation.
+Followup Steps: here to see  if the total number of graduates increased for
+the bottom twenty schools in terms of total graduates.
 ;
 
 proc print 
-        data=Graduates_analytic_file_sorted(obs=10)
+        data=Graduates_analytic_file_sorted(obs=20)
     ;
     id 
         CDS_CODE
@@ -96,17 +95,17 @@ footnote2
 ;
 
 *
-Methodology: Use PROC PRINT to print out the first twenty observations
+Methodology: Use PROC PRINT to print out the first twenty-five observations
 for the GRADRATE column in the temporary dataset created in the data prep file. 
 Then compare the graduation rates.
-Limitations: This doesn't take into account total number of students. It's
-possible a school could have a low total number of students so it would 
-have an better chance of having a higher graduation rate.
+Limitations: This doesnoot take into account total number of students.Maybe 
+a school could have a low total number of students so it would 
+have chance to have a higher graduation rate.
 Followup Steps: Check the bottom ten schools with the lowest gradution rates.
 ;
 
 proc print 
-        data=Graduates_analytic_file(obs=20)
+        data=Graduates_analytic_file(obs=25)
     ;
     id 
         CDS_CODE
