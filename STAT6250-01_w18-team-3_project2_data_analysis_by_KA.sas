@@ -60,7 +60,9 @@ proc sql;
 	select county,year,sum(white)as Total_White_Students
 	from r1 where county="Alameda" 
 	group by county,year;
-quit;
+run;
+
+title;
 
 
 
@@ -91,35 +93,10 @@ or just graduate.
 proc sql;
 	select county,sum(hispanic) as Hispanic_stud_grad
 	from r1 group by county;
-quit;
-=======
-'Research Question: What is the percentage of dropouts compared to graduates?'
-;
-
-title2
-'Rationale: This would generate a ranking of schools based on dropouts vs. graduation.'
-;
-
-*
-Methodology: Use PROC PRINT to print out the percentage of dropouts from 
-GradRates file using columns D9,D10,D11,D12 in the temporary dataset created 
-in the data prep file. Then compare the dropout vs. graduation rates.
-Limitations: This data is for only 1 academic year. This does not give us an
-overall idea.
-Followup Steps: Check the bottom ten schools with the highest dropout rates
-and take steps to bring down the rate.
-;
-
-proc print 
-        data=Graduates_analytic_file_GradRate(obs=20)
-    ;
-    id 
-        CDS_CODE
-    ;
-    var 
-        SCHOOL GRADRATE
-    ;
 run;
+
+title;
+
 
 
 *******************************************************************************;
@@ -127,31 +104,27 @@ run;
 *******************************************************************************;
 
 title1
-'Research Question: What is the number of schools in each county? ?'
+'Research Question: What is the number of schools in each year ?'
 ;
 
 title2
-'Rationale: Rationale: Get a population estimate of graduating students in each county so as to acquire related resources.'
+'Rationale: Get a population estimate of graduating students in each county so as to acquire related resources.'
 ;
 
 *
-Methodology: Use PROC PRINT to print out the sum of the number of schools
-per county in the Graduates_analytic_file file created in data.
-Limitations: None
-Followup Steps: See which county has highest number of schools and focus
-resources on the ones which have lowest number of schools to increase
-numbers of schools and eventually students.
+Methodology: Use PROC SQL to print out the sum of the number of schools
+per year in the r1 data file created by merging the 2 excel files.
+Limitations: Difficult to find which schools are not in the list.
+Followup Steps: See which year has lower number of schools and focus
+resources on the ones which might have been closed due to unfortunate
+circumstances and try to open them up for education and take in students.
 ;
 
-proc means 
-        data=Graduates_analytic_file_high
-        sum
-    ;
-    id
-        CDS_CODE
-    ;
-    var
-        COUNTY
-    ;
+proc sql;
+	select sum(school) as Total_Schools_1314
+	from grads1314_raw_sorted;
+	select sum(school) as Total_Schools_1415
+	from grads1415_raw_sorted;
 run;
-;
+
+title;
