@@ -30,7 +30,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: How is the dropout rate relate to different racial group, are they significant?'
+'Research Question: Which racial group has the most drop-out students?'
 ;
 
 title2
@@ -45,12 +45,14 @@ footnote1
 
 Methodology: 
 
-Limitations: 
+Limitations: the total number of a certain racial group matters, should count for rate instead of number of drop-outs.
 
 Followup Steps: 
 ;
 
-
+proc print
+    data=by_race;
+run;
 
 title;
 footnote;
@@ -82,21 +84,7 @@ Limitations:
 Followup Steps: 
 ;
 
-proc freq
-        data=cde_2014_analytic_file
-    ;
-    table
-             Percent_Eligible_FRPM_K12
-            *PCTGE1500
-            / missing norow nocol nopercent
-    ;
-        where
-            not(missing(PCTGE1500))
-    ;
-    format
-        Percent_Eligible_FRPM_K12 Percent_Eligible_FRPM_K12_bins.
-        PCTGE1500 PCTGE1500_bins.
-    ;
+proc print data=discrepancy1415(obs=10);
 run;
 
 title;
@@ -129,15 +117,7 @@ Limitations:
 Followup Steps: 
 ;
 
-proc print
-        data=cde_2014_analytic_file_sort_sat(obs=10)
-    ;
-    id
-        School_Name
-    ;
-    var
-        excess_sat_takers
-    ;
+proc print data=by_grade;
 run;
 
 title;
