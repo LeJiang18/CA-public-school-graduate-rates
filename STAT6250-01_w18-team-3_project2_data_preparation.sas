@@ -156,120 +156,75 @@ proc sort
 run;
 
 
-* combine FRPM data vertically, combine composite key values into a primary key
-  key, and compute year-over-year change in Percent_Eligible_FRPM_K12,
-  retaining all AY2014-15 fields and y-o-y Percent_Eligible_FRPM_K12 change;
-data frpm1415_raw_with_yoy_change;
-    retain
-        CDS_Code
-    ;
-    length
-        CDS_Code $14.
-    ;
-    set
-        frpm1516_raw_sorted(in=ay2015_data_row)
-        frpm1415_raw_sorted(in=ay2014_data_row)
-    ;
-    retain
-        Percent_Eligible_FRPM_K12_1516
-    ;
-    by
-        County_Code
-        District_Code
-        School_Code
-    ;
-    if
-        ay2015_data_row=1
-    then
-        do;
-            Percent_Eligible_FRPM_K12_1516 = Percent_Eligible_FRPM_K12;
-        end;
-    else if
-        ay2014_data_row=1
-        and
-        Percent_Eligible_FRPM_K12 > 0
-        and
-        substr(School_Code,1,6) ne "000000"
-    then
-        do;
-            CDS_Code = cats(County_Code,District_Code,School_Code);
-            frpm_rate_change_2014_to_2015 =
-                Percent_Eligible_FRPM_K12
-                -
-                Percent_Eligible_FRPM_K12_1516
-            ;
-            output;
-        end;
+* Combine grads1314 & grads1415 vertically;
+data grads1315;
+    set grads1314_raw_sorted grads1415_raw_sorted;
+    by CDS_Code;
 run;
 
+* Create a table of total counts of drop-outs for each racial group;
+proc sql;
+    create table by_race as
+        select sum(hispanic) as hispanic_total,
+               sum(am_ind) as am_ind_total,
+               sum(asian) as asian_total,
+               sum(pac_isld) as pac_isld_total,
+               sum(filipino) as filipino_total,
+               sum(african_am) as african_am_total,
+               sum(white) as white_total,
+               sum(two_more_races) as two_more_races_total,
+               sum(not_reported) as not_reported_total      
+        from grads1315;
+quit;
 
-* build analytic dataset from raw datasets with the least number of columns and
-minimal cleaning/transformation needed to address research questions in
-corresponding data-analysis files;
-data cde_2014_analytic_file;
-    retain
-        CDS_Code
-        School_Name
-        Percent_Eligible_FRPM_K12
-        frpm_rate_change_2014_to_2015
-        PCTGE1500
-        excess_sat_takers
-    ;
-    keep
-        CDS_Code
-        School_Name
-        Percent_Eligible_FRPM_K12
-        frpm_rate_change_2014_to_2015
-        PCTGE1500
-        excess_sat_takers
-    ;
-    merge
-        frpm1415_raw_with_yoy_change
-        gradaf15_raw
-        sat15_raw(rename=(CDS=CDS_Code PCTGE1500=PCTGE1500_character))
-    ;
-    by
-        CDS_Code
-    ;
-    if
-        not(missing(compress(PCTGE1500_character,'.','kd')))
-    then
-        do;
-            PCTGE1500 = input(PCTGE1500_character,best12.2);
-        end;
-    else
-        do;
-            call missing(PCTGE1500);
-        end;
-    excess_sat_takers = input(NUMTSTTAKR,best12.) - input(TOTAL,best12.);
-    if
-        not(missing(CDS_Code))
-        and
-        not(missing(School_Name))
-        and
-        not(missing(School_Name))
-    ;
+
+
+* Merge two datasets, and get difference between two varaibles;
+data consistency1314 (keep=CDS_Code school grade_total race_total discrepancy);
+    length school $100. district $100.;
+    merge grads1314_raw_sorted(in=c)
+          gradrates_raw_sorted(in=s);
+    by CDS_Code;
+    grade_total = sum(D9, D10, D11, D12);
+    race_total = sum(hispanic, am_ind, asian, pac_isld, filipino, african_am, white, two_more_races, not_reported);
+    discrepancy = abs(grade_total - race_total);
+    if c=1 and s=1;
 run;
 
-
-* use proc sort to create a temporary sorted table in descending by
-frpm_rate_change_2014_to_2015;
 proc sort
-        data=cde_2014_analytic_file
-        out=cde_2014_analytic_file_sort_frpm
-    ;
-    by descending frpm_rate_change_2014_to_2015;
+    data=consistency1314
+    out=discrepancy1314;
+    by descending discrepancy;
 run;
 
 
-* use proc sort to create a temporary sorted table in descending by
-excess_sat_takers;
+* Merge two datasets, and get difference between two varaibles;
+data consistency1415 (keep=CDS_Code school grade_total race_total discrepancy);
+    length school $100. district $100.;
+    merge grads1415_raw_sorted(in=c)
+          gradrates_raw_sorted(in=s);
+    by CDS_Code;
+    grade_total = sum(D9, D10, D11, D12);
+    race_total = sum(hispanic, am_ind, asian, pac_isld, filipino, african_am, white, two_more_races, not_reported);
+    discrepancy = abs(grade_total - race_total);
+    if c=1 and s=1;
+run;
+
 proc sort
-        data=cde_2014_analytic_file
-        out=cde_2014_analytic_file_sort_sat
-    ;
-    by descending excess_sat_takers;
+    data=consistency1415
+    out=discrepancy1415;
+    by descending discrepancy;
 run;
+
+* Use PROC SQL to create a table finding the drop-outs across different grades;
+proc sql;
+    create table by_grade as
+        select sum(D9) as D9_total,
+               sum(D10) as D10_total,
+               sum(D11) as D11_total,
+               sum(D12) as D12_total
+        from gradrates_raw_sorted;
+quit;
 
 *combine datasets and use proc sql to calculate total number
 of white students graduating in alameda county in each of

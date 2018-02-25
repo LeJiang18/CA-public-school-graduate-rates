@@ -7,7 +7,7 @@
 This file uses the following analytic dataset to address several research
 questions regarding graduates at CA public high schools
 
-Dataset Name: __________ created in external file
+Dataset Name: grads1314, grads1415 created in external file
 STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
 
@@ -30,7 +30,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: How is the dropout rate relate to different racial group, are they significant?'
+'Research Question: Which racial group has the most drop-out students?'
 ;
 
 title2
@@ -38,19 +38,20 @@ title2
 ;
 
 footnote1
-""
+"Hispanic has the highest number of drop-outs, followed by white. Although a ratio rate would be more sensible, however a minority with such high drop-outs that is higher than majority (white) indicates some issues."
 ;
 
 *
+Methodology: Use PROC SQL to get the total drop-outs for each racial group.
 
-Methodology: 
+Limitations: the size of population of a certain racial group matters, counting by ratio rate instead of number of drop-outs will be more reasonable.
 
-Limitations: 
-
-Followup Steps: 
+Followup Steps: The datasets has no information on total number of students by race, we need do more research to find out each shcoool's demographics.
 ;
 
-
+proc print
+    data=by_race;
+run;
 
 title;
 footnote;
@@ -61,42 +62,26 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question: What are the top 5 high schools that have the highest dropout rate?'
+'Research Question: Does the total drop-outs consistent to the gradrates table? (If total drop-outs by race is equivalent to total drop-outs by grade to check data discrepancy.)'
 ;
 
 title2
-'Rationale: This can help identify which high schools' students have struggles to graduate and investigate should further aids needed.'
+'Rationale: This can help detect if different datasets have data discrepancy in them, and we can also utilized it to find out which school has the highest discrepancy rate.'
 ;
 
 footnote1
-""
+"As we can see, Los Angeles Unified Alternative Education has the highest discrepancy rate, and followed by Granada Hills Charter High."
 ;
 
 *
-Note: 
+Methodology: Merge 13-14 year dataset to gradrates dataset and compare the total drop-outs by race and the total drop-outs by grade, get the difference and sort them from highest to lowest.
 
-Methodology: 
+Limitations: We only see the data from the three datasets, there is not enough information.
 
-Limitations: 
-
-Followup Steps: 
+Followup Steps: Need do more research on the data, to get more information to ensure our data is correct.
 ;
 
-proc freq
-        data=cde_2014_analytic_file
-    ;
-    table
-             Percent_Eligible_FRPM_K12
-            *PCTGE1500
-            / missing norow nocol nopercent
-    ;
-        where
-            not(missing(PCTGE1500))
-    ;
-    format
-        Percent_Eligible_FRPM_K12 Percent_Eligible_FRPM_K12_bins.
-        PCTGE1500 PCTGE1500_bins.
-    ;
+proc print data=discrepancy1415(obs=10);
 run;
 
 title;
@@ -116,29 +101,24 @@ title2
 ;
 
 footnote1
-""
-;
+"12th Grade has suprisingly high drop-outs which is more than twice of 9th and 10th grade."
 
+footnote2
+"9th grade has more drop-outs than 10th grade, but not by a large amount of difference. Especially when there could be data entry error or some other anomaly exist. We can verify if the assumption hihger grade cause higher drop-outs is true by using statistical hypothesis testing.";
+
+footnote3
+"My inference is as grade ranks hihger, the materials will get more difficult. People barely passed their class last year won't be able to pass this year.";
+;
 
 *
-Note: 
+Methodology: Use PROC SQL to get the total drop-outs for each grade. 
 
-Methodology: 
+Limitations: There is no more information to investigate further for the reason why 12th grade has the most drop-outs.
 
-Limitations: 
-
-Followup Steps: 
+Followup Steps: We should research for more data so that we can make a better inference.
 ;
 
-proc print
-        data=cde_2014_analytic_file_sort_sat(obs=10)
-    ;
-    id
-        School_Name
-    ;
-    var
-        excess_sat_takers
-    ;
+proc print data=by_grade;
 run;
 
 title;
