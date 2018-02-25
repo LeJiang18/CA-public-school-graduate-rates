@@ -104,32 +104,25 @@ title;
 *******************************************************************************;
 
 title1
-'Research Question: What is the number of schools in each county? ?'
+'Research Question: What is the number of schools in each year ?'
 ;
 
 title2
-'Rationale: Rationale: Get a population estimate of graduating students in each county so as to acquire related resources.'
+'Rationale: Get a population estimate of graduating students in each county so as to acquire related resources.'
 ;
 
 *
-Methodology: Use PROC PRINT to print out the sum of the number of schools
-per county in the Graduates_analytic_file file created in data.
-Limitations: None
-Followup Steps: See which county has highest number of schools and focus
-resources on the ones which have lowest number of schools to increase
-numbers of schools and eventually students.
+Methodology: Use PROC SQL to print out the sum of the number of schools
+per year in the r1 data file created by merging the 2 excel files.
+Limitations: Difficult to find which schools are not in the list.
+Followup Steps: See which year has lower number of schools and focus
+resources on the ones which might have been closed due to unfortunate
+circumstances and try to open them up for education and take in students.
 ;
 
-proc means 
-        data=Graduates_analytic_file_high
-        sum
-    ;
-    id
-        CDS_CODE
-    ;
-    var
-        COUNTY
-    ;
+proc sql;
+	select county,sum(hispanic) as Hispanic_stud_grad
+	from r1 group by county;
 run;
 
 title;
