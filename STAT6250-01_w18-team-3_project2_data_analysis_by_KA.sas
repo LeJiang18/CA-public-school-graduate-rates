@@ -121,8 +121,10 @@ circumstances and try to open them up for education and take in students.
 ;
 
 proc sql;
-	select county,sum(hispanic) as Hispanic_stud_grad
-	from r1 group by county;
+	select sum(school) as Total_Schools_1314
+	from grads1314_raw_sorted;
+	select sum(school) as Total_Schools_1415
+	from grads1415_raw_sorted;
 run;
 
 title;
