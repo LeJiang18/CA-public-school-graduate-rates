@@ -139,7 +139,7 @@ footnote2
 ;
 
 *
-Methodology: Use proc means to find the sum for the columns D9, D10, D11, and 
+Methodology: Use proc means to find the sum for the columns D9, D10, D11,and 
 D12 in the Graduates_analytic_file file created in data.
 preparation. Then see which one has the highest number.
 Limitations: None
