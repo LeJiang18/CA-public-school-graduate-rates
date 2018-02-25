@@ -38,16 +38,16 @@ title2
 ;
 
 footnote1
-""
+"Hispanic has the highest number of drop-outs, followed by white. Although a ratio rate would be more sensible, however a minority with such high drop-outs that is higher than majority (white) indicates some issues."
 ;
 
 *
 
-Methodology: 
+Methodology: Use PROC SQL to get the total drop-outs for each racial group.
 
-Limitations: the total number of a certain racial group matters, should count for rate instead of number of drop-outs.
+Limitations: the size of population of a certain racial group matters, counting by ratio rate instead of number of drop-outs will be more reasonable.
 
-Followup Steps: 
+Followup Steps: The datasets has no information on total number of students by race, we need do more research to find out each shcoool's demographics.
 ;
 
 proc print
@@ -63,25 +63,23 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question: What are the top 5 high schools that have the highest dropout rate?'
+'Research Question: Does the total drop-outs consistent to the gradrates table? (If total drop-outs by race is equivalent to total drop-outs by grade to check data discrepancy.)'
 ;
 
 title2
-'Rationale: This can help identify which high schools' students have struggles to graduate and investigate should further aids needed.'
+'Rationale: This can help detect if different datasets have data discrepancy in them, and we can also utilized it to find out which school has the highest discrepancy rate.'
 ;
 
 footnote1
-""
+"As we can see, Los Angeles Unified Alternative Education has the highest discrepancy rate, and followed by Granada Hills Charter High."
 ;
 
 *
-Note: 
+Methodology: Merge 13-14 year dataset to gradrates dataset and compare the total drop-outs by race and the total drop-outs by grade, get the difference and sort them from highest to lowest.
 
-Methodology: 
+Limitations: We only see the data from the three datasets, there is not enough information.
 
-Limitations: 
-
-Followup Steps: 
+Followup Steps: Need do more research on the data, to get more information to ensure our data is correct.
 ;
 
 proc print data=discrepancy1415(obs=10);
@@ -108,8 +106,6 @@ footnote1
 ;
 
 *
-Note: 
-
 Methodology: 
 
 Limitations: 
