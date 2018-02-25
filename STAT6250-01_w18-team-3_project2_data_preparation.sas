@@ -223,7 +223,7 @@ proc sql;
                sum(D10) as D10_total,
                sum(D11) as D11_total,
                sum(D12) as D12_total
-        from gradrates;
+        from gradrates_raw_sorted;
 quit;
 
 *combine datasets and use proc sql to calculate total number
