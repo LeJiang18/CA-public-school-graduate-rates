@@ -7,7 +7,7 @@
 This file uses the following analytic dataset to address several research
 questions regarding graduates at CA public high schools
 
-Dataset Name: __________ created in external file
+Dataset Name: grads1314, grads1415 created in external file
 STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
 
@@ -42,7 +42,6 @@ footnote1
 ;
 
 *
-
 Methodology: Use PROC SQL to get the total drop-outs for each racial group.
 
 Limitations: the size of population of a certain racial group matters, counting by ratio rate instead of number of drop-outs will be more reasonable.
@@ -102,15 +101,21 @@ title2
 ;
 
 footnote1
-""
+"12th Grade has suprisingly high drop-outs which is more than twice of 9th and 10th grade."
+
+footnote2
+"9th grade has more drop-outs than 10th grade, but not by a large amount of difference. Especially when there could be data entry error or some other anomaly exist. We can verify if the assumption hihger grade cause higher drop-outs is true by using statistical hypothesis testing.";
+
+footnote3
+"My inference is as grade ranks hihger, the materials will get more difficult. People barely passed their class last year won't be able to pass this year.";
 ;
 
 *
-Methodology: 
+Methodology: Use PROC SQL to get the total drop-outs for each grade. 
 
-Limitations: 
+Limitations: There is no more information to investigate further for the reason why 12th grade has the most drop-outs.
 
-Followup Steps: 
+Followup Steps: We should research for more data so that we can make a better inference.
 ;
 
 proc print data=by_grade;
