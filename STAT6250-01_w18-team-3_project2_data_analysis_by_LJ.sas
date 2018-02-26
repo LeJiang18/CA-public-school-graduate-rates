@@ -42,11 +42,18 @@ footnote1
 ;
 
 *
+Note: This compares the column "HISPANIC", "AM_IND", "ASIAN", "PAC_ISLD", 
+"FILIPINO", "AFRICAN_AM", "WHITE", "TWO_MORE_RACES", "NOT_REPORTED" from 
+grads1314 to the column of the same name from grads1415.
+
+
 Methodology: Use PROC SQL to get the total drop-outs for each racial group.
 
-Limitations: the size of population of a certain racial group matters, counting by ratio rate instead of number of drop-outs will be more reasonable.
+Limitations: the size of population of a certain racial group matters, counting 
+by ratio rate instead of number of drop-outs will be more reasonable.
 
-Followup Steps: The datasets has no information on total number of students by race, we need do more research to find out each shcoool's demographics.
+Followup Steps: The datasets has no information on total number of students by 
+race, we need do more research to find out each shcoool's demographics.
 ;
 
 proc print
@@ -74,12 +81,23 @@ footnote1
 ;
 
 *
-Methodology: Merge 13-14 year dataset to gradrates dataset and compare the total drop-outs by race and the total drop-outs by grade, get the difference and sort them from highest to lowest.
+Note: This compares the column "HISPANIC", "AM_IND", "ASIAN", "PAC_ISLD", 
+"FILIPINO", "AFRICAN_AM", "WHITE", "TWO_MORE_RACES", "NOT_REPORTED" from 
+grads1314 & grads1415 to the column "D9", "D10", "D11", "D12" from gradrates.
 
-Limitations: We only see the data from the three datasets, there is not enough information.
+Methodology: Merge 13-14 year dataset to gradrates dataset and compare the total
+drop-outs by race and the total drop-outs by grade, get the difference and sort
+them from highest to lowest.
 
-Followup Steps: Need do more research on the data, to get more information to ensure our data is correct.
+Limitations: We only see the data from the three datasets, there is not enough 
+information.
+
+Followup Steps: Need do more research on the data, to get more information to
+ensure our data is correct.
 ;
+
+proc print data=discrepancy1314(obs=10);
+run;
 
 proc print data=discrepancy1415(obs=10);
 run;
@@ -111,11 +129,15 @@ footnote3
 ;
 
 *
+Note: This compares the column "D9", "D10", "D11", "D12" from gradrates.
+
 Methodology: Use PROC SQL to get the total drop-outs for each grade. 
 
-Limitations: There is no more information to investigate further for the reason why 12th grade has the most drop-outs.
+Limitations: There is no more information to investigate further for the reason 
+why 12th grade has the most drop-outs.
 
-Followup Steps: We should research for more data so that we can make a better inference.
+Followup Steps: We should research for more data so that we can make a better 
+inference.
 ;
 
 proc print data=by_grade;
