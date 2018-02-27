@@ -17,7 +17,7 @@ school graduates by racial/ethnic group and school for the school year 2013 –
 [Number of Features] 15
 
 [Data Source] http://dq.cde.ca.gov/dataquest/dlfile/dlfile.aspx?cLevel=School&cYear=2013-14&cCat=GradEth&cPage=filesgrad.asp
-I followed the link for the California Department of Education datasets and 
+We followed the link for the California Department of Education datasets and 
 found this one for California high school graduate information. After 
 downloading the text file, the information was copied and pasted into Excel 
 for visualization.
@@ -42,7 +42,7 @@ school graduates by racial/ethnic group and school for the school year 2014 –
 [Number of Features] 15
 
 [Data Source] http://dq.cde.ca.gov/dataquest/dlfile/dlfile.aspx?cLevel=School&cYear=2014-15&cCat=GradEth&cPage=filesgrad.asp
-I followed the link for the California Department of Education datasets and 
+We followed the link for the California Department of Education datasets and 
 found this one for California high school graduate information. After 
 downloading the text file, the information was copied and pasted into Excel 
 for visualization.
@@ -67,7 +67,7 @@ information.
 [Number of Features] 11
 
 [Data Source] http://dq.cde.ca.gov/dataquest/dlfile/dlfile.aspx?cLevel=All&cYear=0910&cCat=NcesRate&cPage=filesncesrate
-I followed the link for the California Department of Education datasets and 
+We followed the link for the California Department of Education datasets and 
 found this one for California high school graduate rates. After 
 downloading the text file, the information was copied and pasted into Excel 
 for visualization.
@@ -260,7 +260,4 @@ data r1;
 run;
 
 
-*use proc sql to find the number of hispanic students
-graduated in 2 years county wise to get a population
-estimate of concentration hispanic students
-in each county;
+
