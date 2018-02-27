@@ -47,10 +47,12 @@ title2
 Methodology: When combining the files Grads1314 and Grads1415 in data,
 select the sum of white students graduated each year and group by Alameda
 county and year.
+
 Limitations: We don't really know if schools kept the same amount of students 
 per year. It's possible that a school could have increased the number of
 students it instructs which could increase the amount of graduates even if
 it's at a lower rate.
+
 Followup Steps: Possibly check if the total number of students increased for
 the county in terms of total students enrolled.
 ;
@@ -82,9 +84,11 @@ title2
 Methodology: Use PROC SQL to find the sum of hispanic students of both years
 using the combined dataset and then group by counties to get an estimate of
 student distribution over different county.
+
 Limitations: We can't find out percentage of hispanic students graduating 
 with top scores.We can only assume they graduate without knowing their
 scores.
+
 Followup Steps: Check the counties with the highest number of student
 graduation rates and check to see if they graduate with high percentage
 or just graduate.
@@ -114,7 +118,9 @@ title2
 *
 Methodology: Use PROC SQL to print out the sum of the number of schools
 per year in the r1 data file created by merging the 2 excel files.
+
 Limitations: Difficult to find which schools are not in the list.
+
 Followup Steps: See which year has lower number of schools and focus
 resources on the ones which might have been closed due to unfortunate
 circumstances and try to open them up for education and take in students.
