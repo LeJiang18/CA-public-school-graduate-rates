@@ -44,6 +44,9 @@ title2
 
 
 *
+Note: This adds the values in column "WHITE" from Grads1314 and Grads1415 
+combined together in dataset r1.
+
 Methodology: When combining the files Grads1314 and Grads1415 in data,
 select the sum of white students graduated each year and group by Alameda
 county and year.
@@ -81,6 +84,9 @@ title2
 ;
 
 *
+Note: This adds the values in column "HISPANIC" from Grads1314 and Grads1415 
+combined together in dataset r1.
+
 Methodology: Use PROC SQL to find the sum of hispanic students of both years
 using the combined dataset and then group by counties to get an estimate of
 student distribution over different county.
@@ -116,8 +122,11 @@ title2
 ;
 
 *
+Note: This uses the column "SCHOOL" from Grads1314 and Grads1415 
+and determines their sum independently to compare total number of schools.
+
 Methodology: Use PROC SQL to print out the sum of the number of schools
-per year in the r1 data file created by merging the 2 excel files.
+per year in the 2 data files Grads1314 and Grads1415.
 
 Limitations: Difficult to find which schools are not in the list.
 
