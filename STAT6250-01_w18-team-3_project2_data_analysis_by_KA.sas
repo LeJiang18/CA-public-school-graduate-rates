@@ -6,16 +6,11 @@
 *
 This file uses the following analytic dataset to address several research
 questions regarding graduation numbers and rates for various California High
-Schools
-
-Dataset Name: Graduates_analytic_file created in external file
-STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
-
+Schools.
 
 Dataset Name: Graduates_analytic_file created in external file
 STAT6250-02_w18-team-3_project2_data_preparation.sas, which is assumed to be
-
-in the same directory as this file
+in the same directory as this file.
 See included file for dataset properties
 ;
 
