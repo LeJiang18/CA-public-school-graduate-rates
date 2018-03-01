@@ -65,7 +65,7 @@ proc print
     id 
         CDS_CODE
     ;
-    var 
+   sum 
         Total_Graduates_Rate_Change
     ;
 run; 
@@ -101,6 +101,7 @@ Followup Steps: School district rows should be seperated from individual
 schools so that generated data can be analyzed properly.
 ;
 
+proc sql;
 proc print data=Graduates_analytic_file_MC2(obs=10);
 		var District Gradrate;
 run;
