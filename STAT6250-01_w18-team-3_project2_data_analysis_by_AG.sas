@@ -30,24 +30,18 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 title1
-'Research Question: What are the  ten California High Schools witch have the highest graduates ?'
+'Research Question: Which schools have the highest graduates ?'
 ;
 
 title2
-'Rationale: This will be show us where is the best ten high school in cali and we will see where school who have the highest graduates.'
+'Rationale: This helps one to determine the schools which have the best resources as they are an indicator of high graduation.'
 ;
 
-footnote1
-'The top ten California High Schools.
-
-footnote2
-'This shows where is we can find  the highest number of graduates .'
-; 
+*
 
 Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
 amonsgt the 2 datasets.
 
-*
 Methodology: In this Step we used proc sql to find the highest number of student top twenty school.
 
 Limitations: We are not sure if the this top schooles have the highest number of gratuades.
@@ -61,27 +55,24 @@ proc sql;
         from grads1314_raw_sorted;
    
 run; 
+
 title;
-footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
 title1
-'Research Question:  Which districts have the highest graduate students presentage ?'
+'Research Question:  Which districts have the highest graduate students percentage ?'
 ;
 
 title2
-'Rationale: Determining the districts having the highest graduate students , one can estimate the educational progress of that district. This would help people to educate students in those districts or schools for maximizing chances of graduation.'
-;
-
-footnote1
-'The districts having highest graduation rate are Verdes Peninsula Unified and Poway Unified'
+'Rationale: Determining the districts having the highest graduate students, one can estimate the educational progress of that district. This would help people to educate students in those districts or schools for maximizing chances of graduation.'
 ;
 
 *
 Note: This makes use of "GRADRATES" column from the data set.
+
 Methodology:  Use PROC Sql  in "GRADRATES" column to examine districts 
 with the highest graduation rate.
 
@@ -96,12 +87,11 @@ schools so that generated data can be analyzed properly.
 proc sql;
        select district, year max(gradrate)
        from gradrates_raw_sorted 
-       group by gradrate
+       group by gradrate;
         
 run;
 
 title;
-footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -113,14 +103,6 @@ title1
 
 title2
 'Rationale: This gives the school an idea on which grade to concentrate to increase the number of graduates to decrease dropout rate.Also it gives the academically weaker students more importance.'
-;
-
-footnote1
-'The grade with the lowest number of dropouts was grade 12.'
-;
-
-footnote2
-'This shows that we need to concentrate on grade which have the lowest graduation rate of all.This would then require to focus more resources on that grade.'
 ;
 
 *
@@ -169,6 +151,5 @@ proc print
 	D12
     ;
 run;
-
 
 title;
