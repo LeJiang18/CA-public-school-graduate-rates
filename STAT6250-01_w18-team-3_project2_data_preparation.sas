@@ -81,19 +81,19 @@ for visualization.
 
 * setup environmental parameters;
 %let inputDataset1URL =
-https://github.com/stat6250/team-3_project2/blob/project02/data/Grads1314.xlsx?raw=true
+https://github.com/stat6250/team-3_project2/blob/master/data/Grads1314.xlsx?raw=true
 ;
 %let inputDataset1Type = XLSX;
 %let inputDataset1DSN = grads1314_raw;
 
 %let inputDataset2URL =
-https://github.com/stat6250/team-3_project2/blob/project02/data/Grads1415.xlsx?raw=true
+https://github.com/stat6250/team-3_project2/blob/master/data/Grads1415.xlsx?raw=true
 ;
 %let inputDataset2Type = XLSX;
 %let inputDataset2DSN = grads1415_raw;
 
 %let inputDataset3URL =
-https://github.com/stat6250/team-3_project2/blob/project02/data/GradRates.xlsx?raw=true
+https://github.com/stat6250/team-3_project2/blob/master/data/GradRates.xlsx?raw=true
 ;
 %let inputDataset3Type = XLSX;
 %let inputDataset3DSN = gradrates_raw;
