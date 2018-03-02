@@ -138,17 +138,37 @@ each school and direct resources towards those grades to increase
 graduation.
 ;
 
-proc means 
-        data=Graduates_analytic_file
-       min
-    ;
-    id
-        CDS_CODE
+proc print
+	noobs
+        data=gradrates_raw_sorted
     ;
     var
-        D9 D10 D11 D12
+    	D9
+	D10
+	D11
+	D12
     ;
 run;
-title;
-footnote;
 
+proc sort
+       data = gradrates_raw_sorted
+       out = min_Desc
+   ;
+   by
+       descending  D9 D10 D11 D12
+   ;
+run;
+
+proc print
+        data = min_Desc (obs=20) 
+    ;
+    var
+   	D9
+	D10
+	D11
+	D12
+    ;
+run;
+
+
+title;
