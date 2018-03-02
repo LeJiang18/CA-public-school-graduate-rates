@@ -30,7 +30,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 title1
-'Research Question: What are the best ten California High Schools whom will have the highest graduates ?'
+'Research Question: What are the  ten California High Schools witch have the highest graduates ?'
 ;
 
 title2
@@ -41,33 +41,25 @@ footnote1
 'The top ten California High Schools.
 
 footnote2
-'This shows  us  where is the best schcools in cali and where can have have the highest graduates .'
+'This shows where is we can find  the highest number of graduates .'
 ; 
 
 Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
 amonsgt the 2 datasets.
 
 *
-Methodology: In this Step we will combinig Grads1314 and Grads1415 in data
-preparation,  after that we will take we take the difference of values, after createing 
-a variable called Total Graduates Rate Change,we useed proc
-sort to create a table.
+Methodology: In this Step we used proc sql to find the highest number of student top twenty school.
 
 Limitations: We are not sure if the this top schooles have the highest number of gratuades.
 
-Followup Steps: in this one we want to see    if the total number of graduates gos up for
+Followup Steps: in this one we want to see if the total number of graduates gos up for
 the last ten schools in terms of total graduates.
 ;
 
-proc print 
-        data=Graduates_analytic_file_sorted(obs=20)
-    ;
-    id 
-        CDS_CODE
-    ;
-    var 
-        Total_Graduates_Rate_Change
-    ;
+proc sql;
+	select school,year,max(total) as highest_total  
+        from grads1314_raw_sorted;
+   
 run; 
 title;
 footnote;
@@ -77,11 +69,11 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question:  Which districts have the highest graduate students percentage?'
+'Research Question:  Which districts have the highest graduate students presentage ?'
 ;
 
 title2
-'Rationale: Determining the districts having the highest graduate students percentage, one can estimate the educational progress of that district. This would help people to educate students in those districts or schools for maximizing chances of graduation.'
+'Rationale: Determining the districts having the highest graduate students , one can estimate the educational progress of that district. This would help people to educate students in those districts or schools for maximizing chances of graduation.'
 ;
 
 footnote1
@@ -90,7 +82,7 @@ footnote1
 
 *
 Note: This makes use of "GRADRATES" column from the data set.
-Methodology:  Use PROC SORT in "GRADRATES" column to examine districts 
+Methodology:  Use PROC Sql  in "GRADRATES" column to examine districts 
 with the highest graduation rate.
 
 Limitations: It is hard to analyze data of the different graduation rates
@@ -101,8 +93,11 @@ Followup Steps: School district rows should be seperated from individual
 schools so that generated data can be analyzed properly.
 ;
 
-proc print data=Graduates_analytic_file_MC2(obs=10);
-		var District Gradrate;
+proc sql;
+       select district, year max(gradrate)
+       from gradrates_raw_sorted 
+       group by gradrate
+        
 run;
 
 title;
