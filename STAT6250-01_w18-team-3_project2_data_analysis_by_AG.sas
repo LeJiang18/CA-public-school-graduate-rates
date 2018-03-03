@@ -44,8 +44,7 @@ footnote2
 'This shows where is we can find  the highest number of graduates .'
 
 ; 
-Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
-amonsgt the 2 datasets.
+
 *
 
 Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
