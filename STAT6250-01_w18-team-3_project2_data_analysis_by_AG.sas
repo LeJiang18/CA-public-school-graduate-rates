@@ -85,6 +85,10 @@ footnote1
 'The districts having highest graduation rate are Verdes Peninsula Unified and Poway Unified'
 ;
 
+footnote2
+'This shows that we need to concentrate about this two schools to learn from their experiences .'
+;
+
 *
 Note: This makes use of "GRADRATES" column from the data set.
 
