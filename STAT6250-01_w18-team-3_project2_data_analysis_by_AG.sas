@@ -60,8 +60,8 @@ the last ten schools in terms of total graduates.
 ;
 
 proc sql;
-	select school,year,max(total) as highest_total  
-        from grads1314_raw_sorted;
+	select school,year,total 
+        from grads1314_raw_sorted = (select max(total) from grads1314_raw_sorted;
    
 run; 
 
