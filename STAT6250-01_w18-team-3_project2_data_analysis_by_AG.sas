@@ -39,13 +39,13 @@ title2
 
 footnote1
 'The top ten California High Schools.'
+;
 
 footnote2
 'This shows where is we can find  the highest number of graduates .'
 
 ; 
-Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
-amonsgt the 2 datasets.
+
 *
 
 Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
@@ -60,8 +60,8 @@ the last ten schools in terms of total graduates.
 ;
 
 proc sql;
-	select school,year,max(total) as highest_total  
-        from grads1314_raw_sorted;
+	select school,year,total 
+        from grads1314_raw_sorted where total = (select max(total) from grads1314_raw_sorted);
    
 run; 
 
@@ -99,9 +99,8 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-       select district, year max(gradrate)
-       from gradrates_raw_sorted 
-       group by gradrate;
+       select district, year,gradrate
+       from gradrates_raw_sorted where gradrate = (select max(gradrate)from gradrates_raw_sorted);
         
 run;
 
@@ -142,6 +141,7 @@ Followup Steps: Determine the grades having lowest graduation rate in
 each school and direct resources towards those grades to increase
 graduation.
 ;
+
 
 proc sort
        data = gradrates_raw_sorted
