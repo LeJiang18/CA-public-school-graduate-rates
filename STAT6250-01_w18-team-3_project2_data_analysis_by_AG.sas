@@ -39,6 +39,7 @@ title2
 
 footnote1
 'The top ten California High Schools.'
+;
 
 footnote2
 'This shows where is we can find  the highest number of graduates .'
