@@ -99,9 +99,8 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-       select district, year max(gradrate)
-       from gradrates_raw_sorted 
-       group by gradrate;
+       select district, year,gradrate
+       from gradrates_raw_sorted where gradrate = (select max(gradrate)from gradrates_raw_sorted);
         
 run;
 
