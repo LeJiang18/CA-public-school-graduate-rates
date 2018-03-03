@@ -38,11 +38,11 @@ title2
 ;
 
 footnote1
-'The top ten California High Schools.'
+'The top California High Schools.'
 ;
 
-footnote2
-'This shows where is we can find  the highest number of graduates .'
+footnote2 
+'This shows us that Downey High and Paramount High have the highest number of  graduation .'
 
 ; 
 
@@ -77,7 +77,8 @@ title1
 ;
 
 title2
-'Rationale: Determining the districts having the highest graduate students, one can estimate the educational progress of that district. This would help people to educate students in those districts or schools for maximizing chances of graduation.'
+'Rationale: Determining the districts having the highest graduate students,
+from here we can estimate the educational progress of that districtand  would help us  to educate students in those districts or schools for maximizing chances of graduation.'
 ;
 
 footnote1
@@ -116,15 +117,16 @@ title1
 ;
 
 title2
-'Rationale: This gives the school an idea on which grade to concentrate to increase the number of graduates to decrease dropout rate.Also it gives the academically weaker students more importance.'
+'Rationale: this one will give the school an idea which grade need to fauces on to dicrease the dropouts.'
 ;
 
 footnote1
-'The grade with the lowest number of dropouts was grade 12.'
+'The grade with the lowest number of dropouts was grade 12 ,because it has the highest numberog graduates    .'
 ;
 
 footnote2
-'This shows that we need to concentrate on grade which have the lowest graduation rate of all.This would then require to focus more resources on that grade.'
+'This shows that we need to concentrate on grade which have the lowest graduation rate of all.
+ and find a solution to reduce the dropouts.'
 ;
 
 *
@@ -132,13 +134,12 @@ Note: This compares the column "D9", "D10", "D11", "D12" from gradrates.
 
 Methodology: Use proc Sort to find the min for the columns D9, D10, D11,and 
 D12 in the gradrates_raw_sorted created in data.
-preparation. Then see which one has the lowest number.
+preparation.we went to see which one has the lowest number.
 
 Limitations:none
 
 Followup Steps: Determine the grades having lowest graduation rate in
-each school and direct resources towards those grades to increase
-graduation.
+each distrect .
 ;
 
 
