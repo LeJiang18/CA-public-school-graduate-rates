@@ -130,12 +130,11 @@ footnote2
 *
 Note: This compares the column "D9", "D10", "D11", "D12" from gradrates.
 
-Methodology: Use proc means to find the sum for the columns D9, D10, D11,and 
-D12 in the Graduates_analytic_file file created in data.
-preparation. Then see which one has the highest number.
+Methodology: Use proc Sort to find the min for the columns D9, D10, D11,and 
+D12 in the gradrates_raw_sorted created in data.
+preparation. Then see which one has the lowest number.
 
-Limitations: The data is for a particular year. Not an average for 
-over the years.
+Limitations:none
 
 Followup Steps: Determine the grades having lowest graduation rate in
 each school and direct resources towards those grades to increase
