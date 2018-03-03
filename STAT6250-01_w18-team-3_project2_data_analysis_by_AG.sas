@@ -143,18 +143,6 @@ each school and direct resources towards those grades to increase
 graduation.
 ;
 
-proc print
-	noobs
-        data=gradrates_raw_sorted
-    ;
-    var
-    	D9
-	D10
-	D11
-	D12
-    ;
-run;
-
 proc sort
        data = gradrates_raw_sorted
        out = min_Desc
