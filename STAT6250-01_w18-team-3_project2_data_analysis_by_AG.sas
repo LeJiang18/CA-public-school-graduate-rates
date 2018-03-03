@@ -37,6 +37,15 @@ title2
 'Rationale: This helps one to determine the schools which have the best resources as they are an indicator of high graduation.'
 ;
 
+footnote1
+'The top ten California High Schools.'
+
+footnote2
+'This shows where is we can find  the highest number of graduates .'
+
+; 
+Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
+amonsgt the 2 datasets.
 *
 
 Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
@@ -57,6 +66,7 @@ proc sql;
 run; 
 
 title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -68,6 +78,10 @@ title1
 
 title2
 'Rationale: Determining the districts having the highest graduate students, one can estimate the educational progress of that district. This would help people to educate students in those districts or schools for maximizing chances of graduation.'
+;
+
+footnote1
+'The districts having highest graduation rate are Verdes Peninsula Unified and Poway Unified'
 ;
 
 *
@@ -92,6 +106,7 @@ proc sql;
 run;
 
 title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -103,6 +118,14 @@ title1
 
 title2
 'Rationale: This gives the school an idea on which grade to concentrate to increase the number of graduates to decrease dropout rate.Also it gives the academically weaker students more importance.'
+;
+
+footnote1
+'The grade with the lowest number of dropouts was grade 12.'
+;
+
+footnote2
+'This shows that we need to concentrate on grade which have the lowest graduation rate of all.This would then require to focus more resources on that grade.'
 ;
 
 *
