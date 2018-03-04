@@ -48,8 +48,7 @@ footnote2
 
 *
 
-Note: in the data Grads1314 and data Grads1415 the column "TOTAL" is compared 
-amonsgt the 2 datasets.
+Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
 
 Methodology: In this Step we used proc sql to find the highest number of student top twenty school.
 
