@@ -210,7 +210,8 @@ data consistency1314 (keep=CDS_Code school grade_total race_total discrepancy);
           gradrates_raw_sorted(in=s);
     by CDS_Code;
     grade_total = sum(D9, D10, D11, D12);
-    race_total = sum(hispanic, am_ind, asian, pac_isld, filipino, african_am, white, two_more_races, not_reported);
+    race_total = sum(hispanic, am_ind, asian, pac_isld, filipino, african_am,
+    white, two_more_races, not_reported);
     discrepancy = abs(grade_total - race_total);
     if c=1 and s=1;
 run;
@@ -229,7 +230,8 @@ data consistency1415 (keep=CDS_Code school grade_total race_total discrepancy);
           gradrates_raw_sorted(in=s);
     by CDS_Code;
     grade_total = sum(D9, D10, D11, D12);
-    race_total = sum(hispanic, am_ind, asian, pac_isld, filipino, african_am, white, two_more_races, not_reported);
+    race_total = sum(hispanic, am_ind, asian, pac_isld, filipino, african_am,
+    white, two_more_races, not_reported);
     discrepancy = abs(grade_total - race_total);
     if c=1 and s=1;
 run;
