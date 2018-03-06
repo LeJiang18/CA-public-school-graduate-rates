@@ -6,7 +6,8 @@
 *
 This file uses the following analytic dataset to address several research
 questions regarding graduation numbers and rates for various California High
-Schools
+Schools.
+
 Dataset Name: Graduates_analytic_file created in external file
 STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
@@ -50,12 +51,14 @@ footnote2
 
 Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
 
-Methodology: In this Step we used proc sql to find the highest number of student top twenty school.
+Methodology: In this Step we used proc sql to find the highest number of 
+student top twenty school.
 
-Limitations: We are not sure if the this top schooles have the highest number of gratuades.
+Limitations: We are not sure if the this top schooles have the highest 
+number of gratuades.
 
-Followup Steps: in this one we want to see if the total number of graduates gos up for
-the last ten schools in terms of total graduates.
+Followup Steps: in this one we want to see if the total number of 
+graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
 proc sql;
@@ -67,6 +70,7 @@ run;
 title;
 footnote;
 
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
@@ -76,8 +80,7 @@ title1
 ;
 
 title2
-'Rationale: Determining the districts having the highest graduate students,
-from here we can estimate the educational progress of that districtand  would help us  to educate students in those districts or schools for maximizing chances of graduation.'
+'Rationale: Determining the districts having the highest graduate students,from here we can estimate the educational progress of that districtand  would help us  to educate students in those districts or schools for maximizing chances of graduation.'
 ;
 
 footnote1
@@ -116,15 +119,16 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question: Which grade has the lowest number of dropouts?'
+'Research Question: How does the drop out rate vary among the different 
+grades?'
 ;
 
 title2
-'Rationale: this one will give the school an idea which grade need to fauces on to dicrease the dropouts.'
+'Rationale: this one will give the school an idea which grade need to focus on to decrease the dropouts.'
 ;
 
 footnote1
-'The grade with the lowest number of dropouts was grade 12 ,because it has the highest numberog graduates    .'
+'The grade with the lowest number of dropouts was grade 12 ,because it has the highest numberog graduates.'
 ;
 
 footnote2
@@ -139,7 +143,8 @@ Methodology: Use proc Sort to find the min for the columns D9, D10, D11,and
 D12 in the gradrates_raw_sorted created in data.
 preparation.we went to see which one has the lowest number.
 
-Limitations:none
+Limitations: We can further analyze the data to pin point correlations among
+the different dropout rates over the years.
 
 Followup Steps: Determine the grades having lowest graduation rate in
 each distrect .
