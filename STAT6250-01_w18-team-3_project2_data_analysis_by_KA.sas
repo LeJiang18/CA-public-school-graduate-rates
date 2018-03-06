@@ -36,6 +36,14 @@ title2
 'Rationale: This help identifies the progress of students in terms of education on a yearly basis.'
 ;
 
+footnote1
+"This gives us the difference in the number of white students graduating each year."
+;
+
+footnote2
+"One can analyze the reason for the drop in the number of graduates in the following year and take measures to increase the number of graduates in the coming year."
+;
+
 
 
 *
