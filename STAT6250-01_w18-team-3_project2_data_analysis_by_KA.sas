@@ -11,6 +11,7 @@ Schools.
 Dataset Name: Graduates_analytic_file created in external file
 STAT6250-02_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file.
+
 See included file for dataset properties
 ;
 
@@ -36,7 +37,13 @@ title2
 'Rationale: This help identifies the progress of students in terms of education on a yearly basis.'
 ;
 
+footnote1
+"This gives us the difference in the number of white students graduating each year."
+;
 
+footnote2
+"One can analyze the reason for the drop in the number of graduates in the following year and take measures to increase the number of graduates in the coming year."
+;
 
 *
 Note: This adds the values in column "WHITE" from Grads1314 and Grads1415 
@@ -55,7 +62,6 @@ Followup Steps: Possibly check if the total number of students increased for
 the county in terms of total students enrolled.
 ;
 
-
 proc sql;
 	select county,year,sum(white)as Total_White_Students
 	from r1 where county="Alameda" 
@@ -63,7 +69,7 @@ proc sql;
 run;
 
 title;
-
+footnote;
 
 
 *******************************************************************************;
@@ -76,6 +82,14 @@ title1
 
 title2
 'Rationale: This would generate a population estimate of graduating hispanic students depending on each county.'
+;
+
+footnote1
+"We see there is randomness in the number of students in each county, there is no normal distribution of hispanic students county wise."
+;
+
+footnote2
+"Based on this, one can conduct a study in discrepancy of population distribution and determine as to why some counties have higher hispanic students and some lower. Then, work on to increase number of students in counties where there is very low population."
 ;
 
 *
@@ -101,7 +115,7 @@ proc sql;
 run;
 
 title;
-
+footnote;
 
 
 *******************************************************************************;
@@ -114,6 +128,18 @@ title1
 
 title2
 'Rationale: Get a population estimate of graduating students in each county so as to acquire related resources.'
+;
+
+footnote1
+"This helps to know that one needs more data as to know why the number of schools decreased in the following year."
+;
+
+footnote2
+"More research on each school which is not in the following year is required to determine if it was closed down or why it was not included in the list."
+;
+
+footnote3
+"Deep research could be done on the schools if they were closed so that it does not happen with other schools."
 ;
 
 *
@@ -138,3 +164,4 @@ proc sql;
 run;
 
 title;
+footnote;
