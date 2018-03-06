@@ -88,11 +88,11 @@ title2
 ;
 
 footnote1
-""
+"We see there is randomness in the number of students in each county, there is no normal distribution of hispanic students county wise."
 ;
 
 footnote2
-""
+"Based on this, one can conduct a study in discrepancy of population distribution and determine as to why some counties have higher hispanic students and some lower. Then, work on to increase number of students in counties where there is very low population."
 ;
 
 *
