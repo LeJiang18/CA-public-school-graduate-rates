@@ -6,10 +6,6 @@
 * 
 [Dataset 1 Name] Grads1314
 
-[Dataset Description] A dataset containing information for California high 
-school graduates by racial/ethnic group and school for the school year 2013 – 
-2014.
-
 [Experimental Unit Description] High Schools within California
 
 [Number of Observations] 2495
@@ -55,10 +51,6 @@ a school within California
 --
 
 [Dataset 3 Name] GradRates
-
-[Dataset Description] A dataset containing information for graduate rates 
-for high schools in California. This dataset also contains dropout 
-information.
 
 [Experimental Unit Description] High Schools within California
 
@@ -260,6 +252,21 @@ data r1;
 	merge grads1314_raw_sorted grads1415_raw_sorted;
 	by YEAR;
 run;
+  
+  
+*set up for AG Question 03;
 
+*min for the columns D9, D10, D11,and 
+D12 in the gradrates_raw_sorted created in data
+; 
+proc sort
+       data = gradrates_raw_sorted
+       out = min_Desc
+   ;
+   by
+       descending  D9 D10 D11 D12
+   ;
+run;
+Organazing the data to see 
 
 
