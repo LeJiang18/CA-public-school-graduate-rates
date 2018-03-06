@@ -134,6 +134,18 @@ title2
 'Rationale: Get a population estimate of graduating students in each county so as to acquire related resources.'
 ;
 
+footnote1
+"This helps to know that one needs more data as to know why the number of schools decreased in the following year."
+;
+
+footnote2
+"More research on each school which is not in the following year is required to determine if it was closed down or why it was not included in the list."
+;
+
+footnote3
+"Deep research could be done on the schools if they were closed so that it does not happen with other schools."
+;
+
 *
 Note: This uses the column "SCHOOL" from Grads1314 and Grads1415 
 and determines their sum independently to compare total number of schools.
