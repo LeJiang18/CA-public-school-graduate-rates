@@ -11,6 +11,7 @@ Schools.
 Dataset Name: Graduates_analytic_file created in external file
 STAT6250-02_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file.
+
 See included file for dataset properties
 ;
 
@@ -44,8 +45,6 @@ footnote2
 "One can analyze the reason for the drop in the number of graduates in the following year and take measures to increase the number of graduates in the coming year."
 ;
 
-
-
 *
 Note: This adds the values in column "WHITE" from Grads1314 and Grads1415 
 combined together in dataset r1.
@@ -63,7 +62,6 @@ Followup Steps: Possibly check if the total number of students increased for
 the county in terms of total students enrolled.
 ;
 
-
 proc sql;
 	select county,year,sum(white)as Total_White_Students
 	from r1 where county="Alameda" 
@@ -72,7 +70,6 @@ run;
 
 title;
 footnote;
-
 
 
 *******************************************************************************;
@@ -119,7 +116,6 @@ run;
 
 title;
 footnote;
-
 
 
 *******************************************************************************;
