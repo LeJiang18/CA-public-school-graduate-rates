@@ -71,6 +71,7 @@ proc sql;
 run;
 
 title;
+footnote;
 
 
 
@@ -84,6 +85,14 @@ title1
 
 title2
 'Rationale: This would generate a population estimate of graduating hispanic students depending on each county.'
+;
+
+footnote1
+""
+;
+
+footnote2
+""
 ;
 
 *
@@ -109,6 +118,7 @@ proc sql;
 run;
 
 title;
+footnote;
 
 
 
@@ -146,3 +156,4 @@ proc sql;
 run;
 
 title;
+footnote;
