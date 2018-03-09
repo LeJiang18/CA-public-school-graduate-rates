@@ -267,6 +267,6 @@ proc sort
        descending  D9 D10 D11 D12
    ;
 run;
-Organazing the data to see 
+
 
 
