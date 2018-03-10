@@ -21,7 +21,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 * load external file that generates analytic dataset cde_2014_analytic_file;
-%include '.\STAT6250-01_w18-team-3_project2_data_preparation.sas'
+%include '.\STAT6250-01_w18-team-3_project2_data_preparation.sas';
 
 
 
