@@ -62,7 +62,7 @@ proc sql;
 	select school,year,total 
         from grads1314_raw_sorted where total = 
 	(select max(total) from grads1314_raw_sorted);
-run; 
+quit; 
 
 title;
 footnote;
@@ -106,7 +106,7 @@ proc sql;
        select district, year,gradrate
        from gradrates_raw_sorted where gradrate =
        (select max(gradrate)from gradrates_raw_sorted);
-run;
+quit;
 
 title;
 footnote;

@@ -256,8 +256,6 @@ run;
   
 *set up for AG Question 03;
 
-*min for the columns D9, D10, D11,and 
-D12 in the gradrates_raw_sorted created in data
 ; 
 proc sort
        data = gradrates_raw_sorted
