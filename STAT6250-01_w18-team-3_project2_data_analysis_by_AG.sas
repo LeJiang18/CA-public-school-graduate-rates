@@ -11,6 +11,7 @@ Schools.
 Dataset Name: Graduates_analytic_file created in external file
 STAT6250-01_w18-team-3_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
@@ -24,11 +25,9 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT6250-01_w18-team-3_project2_data_preparation.sas';
 
 
-
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-
 
 title1
 'Research Question: Which schools have the highest graduates ?'
@@ -44,11 +43,9 @@ footnote1
 
 footnote2 
 'This shows us that Downey High and Paramount High have the highest number of  graduation .'
-
 ; 
 
 *
-
 Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
 
 Methodology: In this Step we used proc sql to find the highest number of 
@@ -65,7 +62,6 @@ proc sql;
 	select school,year,total 
         from grads1314_raw_sorted where total = 
 	(select max(total) from grads1314_raw_sorted);
-   
 run; 
 
 title;
@@ -110,19 +106,18 @@ proc sql;
        select district, year,gradrate
        from gradrates_raw_sorted where gradrate =
        (select max(gradrate)from gradrates_raw_sorted);
-        
 run;
 
 title;
 footnote;
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
 title1
-'Research Question: How does the drop out rate vary among the different 
-grades?'
+'Research Question: How does the drop out rate vary among the different grades?'
 ;
 
 title2
@@ -134,8 +129,7 @@ footnote1
 ;
 
 footnote2
-'This shows that we need to concentrate on grade which have the lowest graduation rate of all.
- and find a solution to reduce the dropouts.'
+'This shows that we need to concentrate on grade which have the lowest graduation rate of all and find a solution to reduce the dropouts.'
 ;
 
 *
@@ -149,9 +143,8 @@ Limitations: We can further analyze the data to pin point correlations among
 the different dropout rates over the years.
 
 Followup Steps: Determine the grades having lowest graduation rate in
-each distrect .
+each district .
 ;
-
 
 proc sort
        data = gradrates_raw_sorted
