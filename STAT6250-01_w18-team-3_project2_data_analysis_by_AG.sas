@@ -125,7 +125,7 @@ title2
 ;
 
 footnote1
-'The grade with the lowest number of dropouts was grade 12 ,because it has the highest numberog graduates.'
+'The grade 12 has the highest number of dropouts.'
 ;
 
 footnote2
