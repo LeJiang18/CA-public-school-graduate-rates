@@ -254,7 +254,8 @@ data r1;
 run;
   
   
-*set up for AG Question 03;
+*set up for AG Question 03,we are using this dataset to
+ arrange the value of droupout in descnding order;
 
 ; 
 proc sort
