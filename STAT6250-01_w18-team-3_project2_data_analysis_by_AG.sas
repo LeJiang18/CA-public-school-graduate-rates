@@ -146,15 +146,6 @@ Followup Steps: Determine the grades having lowest graduation rate in
 each district .
 ;
 
-proc sort
-       data = gradrates_raw_sorted
-       out = min_Desc
-   ;
-   by
-       descending  D9 D10 D11 D12
-   ;
-run;
-
 proc print
         data = min_Desc (obs=20) 
     ;
