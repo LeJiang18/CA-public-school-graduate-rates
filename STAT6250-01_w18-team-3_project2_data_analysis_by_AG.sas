@@ -30,23 +30,23 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: Which school has the highest number of graduates ?'
+'Research Question: Which schools have the highest number of graduates in years 2013-14 and 2014-15?'
 ;
 
 title2
-'Rationale: This helps one to determine the school  the best resources as they are an indicator of high graduation.'
+'Rationale: This helps one to determine the schools having high graduation as they are an indicator of excellent resources .'
 ;
 
 footnote1
-'We have output for the the top California High School for the year 2013-14 and 2014-15 academic year.'
+'We have output for the the top 5 California High School for the 2013-14 and 2014-15 academic years.'
 ;
 
 footnote2 
-'This shows us that Polytechnic High has the highest number of graduating students with 1070 in the year 2014-15 .'
+'This shows that all 5 schools have more than 1000 students graduating which depicts the efficiency of schools .'
 ; 
 
 footnote3
-'Polytechnic High has very good reputation with very good teachers and very excellent management  '
+'Polytechnic High has very good reputation with very good teachers and very excellent management.'
 ;
 *
 Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
@@ -61,10 +61,17 @@ Followup Steps: in this one we want to see if the total number of
 graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
-proc sql;
-	select school label "School",year label "Academic Year",total label "Total Graduates" 
-        from M_T where total = (select max(total) from M_T);
-quit; 
+proc print
+        data = mt12 (obs=5) 
+    ;
+    var
+        county
+	district
+	school
+	year
+   	total
+    ;
+run;
 
 title;
 footnote;
