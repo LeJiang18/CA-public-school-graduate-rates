@@ -101,7 +101,7 @@ title2
 'Rationale: If there is any difference, we can determine why there are less districts in a specific year.'
 
 footnote1
-'The total number of district listed Academic Year 2013-2014 was 2495 and in the Academic Year 2014-2015 the total number of Diatrict listed was 2490 .'
+'The total count of district listed Academic Year 2013-2014 was 2495 and in the Academic Year 2014-2015 the total count of District listed was 2490.'
 ;
 
 footnote2
@@ -165,11 +165,16 @@ of students whose race is not reported .
 
 Methodology: Use proc Sql to list the school and the max 
 function to select the school which has the maximum number
-of students whose race is not reported.
+of students whose race is not reported from both years.
 
-Limitations: We can further analyze the data to why schools
-Followup Steps: Determine the No reposted race in
-schools .
+Limitations: There is not much to go on as to why there was such
+high cases of not reported.One can launch an investgation into the school
+and find out the reasons for the same
+
+
+Followup Steps: We can further analyze the data as to why the school
+missed so many students to catgorize into the race and personally
+interview the students to determine their nationality.
 ;
 
 proc sql;
