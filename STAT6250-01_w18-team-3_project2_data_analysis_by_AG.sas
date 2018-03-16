@@ -62,14 +62,24 @@ graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
 proc print
-        data = mt12 (obs=5) 
+        data = mt12 (obs=10) 
     ;
     var
+    	school
         county
 	district
-	school
 	year
    	total
+    ;
+    label
+    	school='School'
+     	county='County'
+     	district='District'
+	year='Academic Year'
+   	total='Total number of graduates'
+    ;
+    format
+    	total comma12
     ;
 run;
 
