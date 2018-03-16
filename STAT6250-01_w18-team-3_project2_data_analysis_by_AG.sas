@@ -30,21 +30,24 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: Which schools have the highest graduates ?'
+'Research Question: Which school has the highest number of graduates ?'
 ;
 
 title2
-'Rationale: This helps one to determine the schools which have the best resources as they are an indicator of high graduation.'
+'Rationale: This helps one to determine the school  the best resources as they are an indicator of high graduation.'
 ;
 
 footnote1
-'The top California High Schools.'
+'We have output for the the top California High School for the year 2013-14 and 2014-15 academic year.'
 ;
 
 footnote2 
-'This shows us that Downey High and Paramount High have the highest number of  graduation .'
+'This shows us that Polytechnic High has the highest number of graduating students with 1070 in the year 2014-15 .'
 ; 
 
+footnote3
+'Polytechnic High has very good reputation with very good teachers and very excellent management  '
+;
 *
 Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
 
@@ -59,9 +62,8 @@ graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
 proc sql;
-	select school,year,total 
-        from grads1314_raw_sorted where total = 
-	(select max(total) from grads1314_raw_sorted);
+	select school label "School",year label "Academic Year",total label "Total Graduates" 
+        from M_T where total = (select max(total) from M_T);
 quit; 
 
 title;
@@ -73,7 +75,8 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question:  Which districts have the highest graduate students percentage ?'
+'Research Question:  Which districts and county has the highest graduate 
+students percentage ever recorded in all the acadmeic year ?'
 ;
 
 title2
@@ -81,11 +84,15 @@ title2
 ;
 
 footnote1
-'The districts having highest graduation rate are Verdes Peninsula Unified and Poway Unified'
+'The districts having highest graduation rate are Verdes Peninsula Unified (Los Angeles county) and Poway Unified (San Diego county) in the academic year 2009-10.'
 ;
 
 footnote2
-'This shows that we need to concentrate about this two schools to learn from their experiences .'
+'The percentage of graduates is 99.8% for both counties.'
+;
+
+footnote3
+'This shows that we need to use thes two districts as an example to learn from their experiences .'
 ;
 
 *
@@ -103,7 +110,7 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-       select district, year,gradrate
+       select county, district label "District", year label "Academic Year",gradrate label "Graduate Percentage %" 
        from gradrates_raw_sorted where gradrate =
        (select max(gradrate)from gradrates_raw_sorted);
 quit;
@@ -125,13 +132,16 @@ title2
 ;
 
 footnote1
-'The grade 12 has the highest number of dropouts.'
+'The grade 12 has the highest number of dropouts i.e 42078 in total of the whole state.'
 ;
 
 footnote2
-'This shows that we need to concentrate on grade which have the lowest graduation rate of all and find a solution to reduce the dropouts.'
+'This shows that we need to concentrate on grade 12 which have the highest graduation rate of all and find a solution to reduce the dropouts and increase the grdauates for the development of children.'
 ;
 
+footnote3
+'12th grade students are old and mature enough to work, if they do not have financial support. To meet their and the family needs, they might start working outside resulting in dropping their school and losing a chance to graduate from high school.'
+;
 *
 Note: This compares the column "D9", "D10", "D11", "D12" from gradrates.
 
@@ -150,6 +160,9 @@ proc print
         data = min_Desc (obs=20) 
     ;
     var
+        county
+	district
+	school
    	D9
 	D10
 	D11
