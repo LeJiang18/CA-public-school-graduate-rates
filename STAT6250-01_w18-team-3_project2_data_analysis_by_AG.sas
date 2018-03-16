@@ -127,9 +127,9 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-	select count(district) as Number of Districts
+	select count(district) as Total_Districts_2013_2014
 	from grads1314_raw_sorted;
-	select count(district) as Number of Districts
+	select count(district) as Total_Districts_2014_2015
 	from grads1415_raw_sorted;
 quit;
 
