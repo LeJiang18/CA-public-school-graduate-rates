@@ -267,11 +267,21 @@ proc sort
    ;
 run;
 
-*set up for AG Question 01,we are using this dataset to
+ *set up for AG Question 01,we are using this dataset to
  highest number of graduates in school;
+
 data M_T;
 	merge grads1314_raw_sorted grads1415_raw_sorted;
 	by YEAR;
+run;
+
+proc sort
+       data = M_T
+       out = mt12
+   ;
+   by
+       descending  total
+   ;
 run;
 
 
