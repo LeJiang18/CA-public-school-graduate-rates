@@ -48,6 +48,7 @@ footnote2
 footnote3
 'Los Angeles and Orange County has the highest number of graduates in both academic years starting from 894 and going up to 1070.'
 ;
+
 *
 Note: In the data mt12 which is a combination of grads1314_raw_sorted
 and grads1415_raw_sorted we are taking the max of the column "TOTAL"
@@ -182,7 +183,6 @@ proc sql;
 	where not_reported=(select max(not_reported)
 	from mt12);
 quit;
-
 
 title;
 footnote;
