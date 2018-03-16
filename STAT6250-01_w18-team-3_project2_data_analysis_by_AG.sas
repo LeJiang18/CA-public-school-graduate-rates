@@ -61,10 +61,16 @@ Followup Steps: in this one we want to see if the total number of
 graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
-proc sql;
-	select school label "School",year label "Academic Year",total label "Total Graduates" 
-        from M_T where total = (select max(total) from M_T);
-quit; 
+proc print
+        data = mt12 (obs=5) 
+    ;
+    var
+        county
+	district
+	school
+   	total
+    ;
+run;
 
 title;
 footnote;
