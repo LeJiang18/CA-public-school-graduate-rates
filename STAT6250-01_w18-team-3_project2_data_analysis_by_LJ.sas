@@ -120,9 +120,11 @@ title2
 
 footnote1
 "12th Grade has suprisingly high drop-outs which is more than twice of 9th and 10th grade."
+;
 
 footnote2
-"9th grade has more drop-outs than 10th grade, but not by a large amount of difference. Especially when there could be data entry error or some other anomaly exist. We can verify if the assumption hihger grade cause higher drop-outs is true by using statistical hypothesis testing.";
+"9th grade has more drop-outs than 10th grade, but not by a large amount of difference. Especially when there could be data entry error or some other anomaly exist. We can verify if the assumption hihger grade cause higher drop-outs is true by using statistical hypothesis testing."
+;
 
 footnote3
 "My inference is as grade ranks hihger, the materials will get more difficult. People barely passed their class last year won't be able to pass this year.";
