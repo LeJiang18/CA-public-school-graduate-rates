@@ -127,9 +127,9 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-	select count(district) as Total_Districts_2013_2014
+	select count(district) as Total_Districts_2013_2014,year as Academic_Year
 	from grads1314_raw_sorted;
-	select count(district) as Total_Districts_2014_2015
+	select count(district) as Total_Districts_2014_2015,year as Academic_Year
 	from grads1415_raw_sorted;
 quit;
 
@@ -174,34 +174,11 @@ Followup Steps: Determine the grades having lowest graduation rate in
 each district .
 ;
 
-proc print
-        data = min_Desc (obs=10) noobs label
-    ;
-    var
-    	school
-        county
-	district
-   	D9
-	D10
-	D11
-	D12
-    ;
-    label
-    	school='School'
-     	county='County'
-     	district='District'
-   	D9='9th Grade Dropout'
-	D10='10th Grade Dropout'
-	D11='11th Grade Dropout'
-	D12='12th Grade Dropout'
-    ;
-    format
-    	
-    	D9 comma12.2
-	D10 comma12.2
-	D11 comma12.2
-	D12 comma12.2
-run;
+proc sql;
+	select county as County,sum(not_reported) as Graduating_Students_Not_Reported, year as Year_2013_2014_and_2014_2015
+	from mt12;
+quit;
+
 
 title;
 footnote;
