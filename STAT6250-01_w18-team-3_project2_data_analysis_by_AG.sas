@@ -140,7 +140,7 @@ footnote2
 ;
 
 footnote3
-'12th grade students are old and mature enough to work, if they don't have financial support. To meet their and the family needs, they might start working outside resulting in dropping their school and losing a chance to graduate from high school.'
+'12th grade students are old and mature enough to work, if they do not have financial support. To meet their and the family needs, they might start working outside resulting in dropping their school and losing a chance to graduate from high school.'
 ;
 *
 Note: This compares the column "D9", "D10", "D11", "D12" from gradrates.
