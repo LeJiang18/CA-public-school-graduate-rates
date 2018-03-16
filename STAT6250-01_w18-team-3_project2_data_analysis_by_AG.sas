@@ -59,9 +59,9 @@ graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
 proc sql;
-	select school,year,total 
-        from grads1314_raw_sorted where total = 
-	(select max(total) from grads1314_raw_sorted);
+	select school label "School",year label "Academic Year",total label "Total Graduates" 
+        from data M_T where total = 
+	(select max(total) from data M_T);
 quit; 
 
 title;
