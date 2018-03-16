@@ -127,9 +127,9 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-	select count(district) as Total_Districts_2013_2014,year as Academic_Year
+	select count(district) as Total_Districts_2013_2014
 	from grads1314_raw_sorted;
-	select count(district) as Total_Districts_2014_2015,year as Academic_Year
+	select count(district) as Total_Districts_2014_2015
 	from grads1415_raw_sorted;
 quit;
 
@@ -175,8 +175,8 @@ each district .
 ;
 
 proc sql;
-	select county as County,sum(not_reported) as Graduating_Students_Not_Reported, year as Year_2013_2014_and_2014_2015
-	from mt12;
+	select school, not_reported from mt12 where not_reported=(select max(not_reported)
+	from mt12);
 quit;
 
 
