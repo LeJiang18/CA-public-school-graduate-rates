@@ -78,7 +78,7 @@ proc print
    	total='Total number of graduates'
     ;
     format
-    	year  
+    	year  YYMMDDw
     	total comma12.2
     ;
 run;
