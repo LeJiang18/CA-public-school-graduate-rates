@@ -84,14 +84,14 @@ title2
 ;
 
 footnote1
-'The districts having highest graduation rate are Verdes Peninsula Unified (Los Angeles county) and Poway Unified (San Diego county) in the academic year 2009-10'
+'The districts having highest graduation rate are Verdes Peninsula Unified (Los Angeles county) and Poway Unified (San Diego county) in the academic year 2009-10.'
 ;
 
 footnote2
 'The percentage of graduates is 99.8% for both counties.'
 ;
 
-footnote 3
+footnote3
 'This shows that we need to use thes two districts as an example to learn from their experiences .'
 ;
 
