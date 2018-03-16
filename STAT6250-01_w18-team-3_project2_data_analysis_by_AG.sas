@@ -174,17 +174,32 @@ each district .
 ;
 
 proc print
-        data = min_Desc (obs=20) 
+        data = min_Desc (obs=10) noobs label
     ;
     var
+    	school
         county
 	district
-	school
    	D9
 	D10
 	D11
 	D12
     ;
+    label
+    	school='School'
+     	county='County'
+     	district='District'
+   	D9='9th Grade Dropout'
+	D10='10th Grade Dropout'
+	D11='11th Grade Dropout'
+	D12='12th Grade Dropout'
+    ;
+    format
+    	
+    	D9 comma12.2
+	D10 comma12.2
+	D11 comma12.2
+	D12 comma12.2
 run;
 
 title;
