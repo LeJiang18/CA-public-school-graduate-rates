@@ -127,9 +127,10 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-       select county, district label "District", year label "Academic Year",gradrate label "Graduate Percentage %" 
-       from gradrates_raw_sorted where gradrate =
-       (select max(gradrate)from gradrates_raw_sorted);
+	select count(district) as Number of Districts
+	from grads1314_raw_sorted;
+	select count(district) as Number of Districts
+	from grads1415_raw_sorted;
 quit;
 
 title;
