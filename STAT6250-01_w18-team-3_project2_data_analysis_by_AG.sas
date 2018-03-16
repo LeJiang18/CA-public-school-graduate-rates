@@ -62,7 +62,7 @@ graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
 proc print
-        data = mt12 (obs=10) label
+        data = mt12 (obs=10) noobs label
     ;
     var
     	school
@@ -78,7 +78,8 @@ proc print
    	total='Total number of graduates'
     ;
     format
-    	total comma12
+    	year  
+    	total comma12.2
     ;
 run;
 
