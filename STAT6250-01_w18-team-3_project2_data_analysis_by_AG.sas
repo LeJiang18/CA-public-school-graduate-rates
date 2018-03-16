@@ -134,13 +134,16 @@ title2
 ;
 
 footnote1
-'The grade 12 has the highest number of dropouts.'
+'The grade 12 has the highest number of dropouts i.e 42078 in total of the whole state.'
 ;
 
 footnote2
-'This shows that we need to concentrate on grade which have the lowest graduation rate of all and find a solution to reduce the dropouts.'
+'This shows that we need to concentrate on grade 12 which have the highest graduation rate of all and find a solution to reduce the dropouts and increase the grdauates for the development of children.'
 ;
 
+footnote3
+'12th grade students are old and mature enough to work, if they don't have financial support. To meet their and the family needs, they might start working outside resulting in dropping their school and losing a chance to graduate from high school.'
+;
 *
 Note: This compares the column "D9", "D10", "D11", "D12" from gradrates.
 
