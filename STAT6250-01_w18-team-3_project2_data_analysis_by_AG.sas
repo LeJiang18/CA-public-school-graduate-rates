@@ -30,21 +30,26 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1
-'Research Question: Which schools have the highest graduates ?'
+'Research Question: Which school has the highest number of graduates ?'
 ;
 
 title2
-'Rationale: This helps one to determine the schools which have the best resources as they are an indicator of high graduation.'
+'Rationale: This helps one to determine the school  the best resources as they are an indicator of high graduation.'
 ;
 
 footnote1
-'The top California High Schools.'
+'We have output for the the top California High School for the year 2014-15 
+academic year.'
 ;
 
 footnote2 
 'This shows us that Downey High and Paramount High have the highest number of  graduation .'
 ; 
 
+footnote3
+'Polytechnic high had the highest total number of graduates out of all
+the school with 1070 total graduates.'
+;
 *
 Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
 
@@ -59,7 +64,7 @@ graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
 proc sql;
-	select school label "School",year label "Academic Year",total label "Total Graduates" 
+	select school label "School",year label "Academic Year",total label "Total Graduates" comma
         from M_T where total = (select max(total) from M_T);
 quit; 
 
@@ -72,7 +77,8 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question:  Which districts have the highest graduate students percentage ?'
+'Research Question:  Which districts and county has the highest graduate 
+students percentage ever recorded in all the acadmeic year ?'
 ;
 
 title2
@@ -80,11 +86,15 @@ title2
 ;
 
 footnote1
-'The districts having highest graduation rate are Verdes Peninsula Unified and Poway Unified'
+'The districts having highest graduation rate are Verdes Peninsula Unified (Los Angeles county) and Poway Unified (San Diego county) in the academic year 2009-10'
 ;
 
 footnote2
-'This shows that we need to concentrate about this two schools to learn from their experiences .'
+'The percentage of graduates is 99.8% for both counties.'
+;
+
+footnote 3
+'This shows that we need to use thes two districts as an example to learn from their experiences .'
 ;
 
 *
@@ -102,7 +112,7 @@ schools so that generated data can be analyzed properly.
 ;
 
 proc sql;
-       select district, year,gradrate
+       select county, district label "District", year label "Academic Year",gradrate label "Graduate Percentage %" 
        from gradrates_raw_sorted where gradrate =
        (select max(gradrate)from gradrates_raw_sorted);
 quit;
@@ -149,6 +159,9 @@ proc print
         data = min_Desc (obs=20) 
     ;
     var
+        county
+	district
+	school
    	D9
 	D10
 	D11
