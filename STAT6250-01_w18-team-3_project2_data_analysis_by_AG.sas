@@ -38,17 +38,15 @@ title2
 ;
 
 footnote1
-'We have output for the the top California High School for the year 2014-15 
-academic year.'
+'We have output for the the top California High School for the year 2013-14 and 2014-15 academic year.'
 ;
 
 footnote2 
-'This shows us that Downey High and Paramount High have the highest number of  graduation .'
+'This shows us that Polytechnic High has the highest number of graduating students with 1070 in the year 2014-15 .'
 ; 
 
 footnote3
-'Polytechnic high had the highest total number of graduates out of all
-the school with 1070 total graduates.'
+'Polytechnic High has very good reputation with very good teachers and very excellent management  '
 ;
 *
 Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
@@ -64,7 +62,7 @@ graduates gos up forthe last ten schools in terms of total graduates.
 ;
 
 proc sql;
-	select school label "School",year label "Academic Year",total label "Total Graduates" comma
+	select school label "School",year label "Academic Year",total label "Total Graduates" 
         from M_T where total = (select max(total) from M_T);
 quit; 
 
