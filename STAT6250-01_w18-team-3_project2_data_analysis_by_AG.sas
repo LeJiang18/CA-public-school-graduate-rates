@@ -134,16 +134,10 @@ proc sql;
 	from grads1314_raw_sorted
 	union
 	select year, count(district) as Total_Districts
-	from grads1415_raw_sorted;
+	from grads1415_raw_sorted
 	;
-	 label
-    	district='District'
-	year='Year'
-   	Total_Districts='Total number of Districts'
-    ;
-    format
-    	total comma12.
-    ;
+	
+   
 quit;
 
 title;
