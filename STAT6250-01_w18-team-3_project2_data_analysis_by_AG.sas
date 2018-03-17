@@ -200,7 +200,6 @@ proc sql;
 	where not_reported=(select max(not_reported)
 	from grads1415_raw_sorted);
 	
-	
 quit;
 
 title;
