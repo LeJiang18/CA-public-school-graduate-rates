@@ -188,7 +188,7 @@ interview the students to determine their nationality.
 ;
 
 proc sql;
-	select year, school, not_reported from grads1314_raw_sorted 
+	select year "Year", school "School", not_reported "Not reported" from grads1314_raw_sorted 
 	where not_reported=(select max(not_reported)
 	from grads1314_raw_sorted) union 
 	select year, school, not_reported from grads1415_raw_sorted 
