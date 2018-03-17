@@ -34,42 +34,55 @@ title1
 ;
 
 title2
-'Rationale: This helps one to determine the schools having high graduation as they are an indicator of excellent resources .'
+'Rationale: This helps one to determine the schools having high graduation as they are an indicator of excellent resources.'
 ;
 
 footnote1
-'We have output for the the top 5 California High School for the 2013-14 and 2014-15 academic years.'
+'We have output for the the top 10 California High School for the 2013-14 and 2014-15 academic years.'
 ;
 
 footnote2 
-'This shows that all 5 schools have more than 1000 students graduating which depicts the efficiency of schools .'
+'This shows that all 10 schools have more than 1000 students graduating which depicts the efficiency of schools .'
 ; 
 
 footnote3
-'Polytechnic High has very good reputation with very good teachers and very excellent management.'
+'Los Angeles and Orange County has the highest number of graduates in both academic years starting from 894 and going up to 1070.'
 ;
+
 *
-Note: in the data Grads1314 we are taking the max of the column "TOTAL". 
+Note: In the data mt12 which is a combination of grads1314_raw_sorted
+and grads1415_raw_sorted we are taking the max of the column "TOTAL"
+which is a represenation of total number graduates from each school . 
 
 Methodology: In this Step we used proc sql to find the highest number of 
-student top twenty school.
+student graduates from top 10 schools.
 
-Limitations: We are not sure if the this top schooles have the highest 
-number of gratuades.
+Limitations: We are not sure of the criteria used to determine the 
+top 10 schools have the highest number of graduates.
 
-Followup Steps: in this one we want to see if the total number of 
-graduates gos up forthe last ten schools in terms of total graduates.
+Followup Steps: We need more evidence in terms of resources available 
+in the schools to find out how the schools are producing high
+number of graduates.
 ;
 
 proc print
-        data = mt12 (obs=5) 
+        data = mt12 (obs=10) noobs label
     ;
     var
+    	school
         county
 	district
-	school
 	year
    	total
+    ;
+    label
+    	school='School'
+     	county='County'
+     	district='District'
+   	total='Total number of graduates'
+    ;
+    format
+    	total comma12.2
     ;
 run;
 
@@ -82,44 +95,44 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question:  Which districts and county has the highest graduate 
-students percentage ever recorded in all the acadmeic year ?'
+'Research Question: How many total districts are listed each Academic year 2013-2014 and 2014-2015 ?'
 ;
 
 title2
-'Rationale: Determining the districts having the highest graduate students,from here we can estimate the educational progress of that districtand  would help us  to educate students in those districts or schools for maximizing chances of graduation.'
-;
+'Rationale: If there is any difference, we can determine why there are less districts in a specific year.'
 
 footnote1
-'The districts having highest graduation rate are Verdes Peninsula Unified (Los Angeles county) and Poway Unified (San Diego county) in the academic year 2009-10.'
+'The total count of district listed Academic Year 2013-2014 was 2495 and in the Academic Year 2014-2015 the total count of District listed was 2490.'
 ;
 
 footnote2
-'The percentage of graduates is 99.8% for both counties.'
+'In 2014-2015 Academic Year 5 Districts were off list from the total number of districts listed In the Academic Year 2013-2014  .'
 ;
 
 footnote3
-'This shows that we need to use thes two districts as an example to learn from their experiences .'
+'This can happen maybe because the California State is big and maybe the districts merged toghther or were left out of the list because they were not deemed important.'
 ;
 
 *
-Note: This makes use of "GRADRATES" column from the data set.
+Note: This makes use of "district " column from the grads1314_raw_sorted
+data set and grads1415_raw_sorted data set.
 
-Methodology:  Use PROC Sql  in "GRADRATES" column to examine districts 
-with the highest graduation rate.
+Methodology:  Use PROC Sql in "district" column to examine
+the total number of districts in each academic year.
 
-Limitations: It is hard to analyze data of the different graduation rates
-from the districts, since school district rows and individual schools are 
-unidentical.
+Limitations: It is hard to analyze data why there were less districts 
+in the following year without some more columns in dataset pertaining
+to details of district.
 
-Followup Steps: School district rows should be seperated from individual 
-schools so that generated data can be analyzed properly.
+Followup Steps: We need to predict if the same trend will continue or
+will the number of districts remain the same or will they increase.
 ;
 
 proc sql;
-       select county, district label "District", year label "Academic Year",gradrate label "Graduate Percentage %" 
-       from gradrates_raw_sorted where gradrate =
-       (select max(gradrate)from gradrates_raw_sorted);
+	select count(district) as Total_Districts_2013_2014
+	from grads1314_raw_sorted;
+	select count(district) as Total_Districts_2014_2015
+	from grads1415_raw_sorted;
 quit;
 
 title;
@@ -131,51 +144,45 @@ footnote;
 *******************************************************************************;
 
 title1
-'Research Question: How does the drop out rate vary among the different grades?'
+'Research Question: Which School has the highest number of students not reported in terms of race ?'
 ;
 
 title2
-'Rationale: this one will give the school an idea which grade need to focus on to decrease the dropouts.'
+'Rationale: this one will give the management an idea to work on finding the nationality of students.'
 ;
 
 footnote1
-'The grade 12 has the highest number of dropouts i.e 42078 in total of the whole state.'
+'Los Angeles Unified Alternative Education has the highest number of not reported students 248 based on their race.'
 ;
 
 footnote2
-'This shows that we need to concentrate on grade 12 which have the highest graduation rate of all and find a solution to reduce the dropouts and increase the grdauates for the development of children.'
+'This reveals that Los Angeles Unified Alternative Education has to be more hard working in finding out the nationality of students in order to be more diverse in their teaching and learn their culture to be more understanding their needs.'
 ;
 
-footnote3
-'12th grade students are old and mature enough to work, if they do not have financial support. To meet their and the family needs, they might start working outside resulting in dropping their school and losing a chance to graduate from high school.'
-;
+
 *
-Note: This compares the column "D9", "D10", "D11", "D12" from gradrates.
+Note: This lists the school which has the maximum number
+of students whose race is not reported .
 
-Methodology: Use proc Sort to find the min for the columns D9, D10, D11,and 
-D12 in the gradrates_raw_sorted created in data.
-preparation.we went to see which one has the lowest number.
+Methodology: Use proc Sql to list the school and the max 
+function to select the school which has the maximum number
+of students whose race is not reported from both years.
 
-Limitations: We can further analyze the data to pin point correlations among
-the different dropout rates over the years.
+Limitations: There is not much to go on as to why there was such
+high cases of not reported.One can launch an investgation into the school
+and find out the reasons for the same
 
-Followup Steps: Determine the grades having lowest graduation rate in
-each district .
+
+Followup Steps: We can further analyze the data as to why the school
+missed so many students to catgorize into the race and personally
+interview the students to determine their nationality.
 ;
 
-proc print
-        data = min_Desc (obs=20) 
-    ;
-    var
-        county
-	district
-	school
-   	D9
-	D10
-	D11
-	D12
-    ;
-run;
+proc sql;
+	select school, not_reported from mt12 
+	where not_reported=(select max(not_reported)
+	from mt12);
+quit;
 
 title;
 footnote;
