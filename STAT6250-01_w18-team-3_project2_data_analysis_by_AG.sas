@@ -199,7 +199,7 @@ proc sql;
 	select year, school, not_reported from grads1415_raw_sorted 
 	where not_reported=(select max(not_reported)
 	from grads1415_raw_sorted);
-	
+		
 quit;
 
 title;
