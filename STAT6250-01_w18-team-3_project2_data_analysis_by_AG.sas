@@ -110,7 +110,7 @@ footnote2
 ;
 
 footnote3
-' This can happen maybe because the California State is a big state and maybe the districts merged toghther or were left out of the list because they were not deemed important.'
+'This can happen maybe because the California State is big and maybe the districts merged toghther or were left out of the list because they were not deemed important.'
 ;
 
 *
