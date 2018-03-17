@@ -171,7 +171,7 @@ footnote2
 ;
 
 footnote3
-'The reason for this could be that some students don't want to disclose their race or they do not identify with the races listed as options for them to chose from .'
+'The reason for this could be that some students don't want to disclose their race or they donnot identify with the races listed as options for them to chose from .'
 ;
 
 *
