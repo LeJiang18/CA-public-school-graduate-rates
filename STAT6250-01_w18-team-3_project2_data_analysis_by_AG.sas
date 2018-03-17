@@ -101,6 +101,7 @@ title1
 
 title2
 'Rationale: If there is any difference, we can determine why there are less districts in a specific year.'
+;
 
 footnote1
 'The total count of district listed Academic Year 2013-2014 was 2495 and in the Academic Year 2014-2015 the total count of District listed was 2490.'
@@ -130,7 +131,7 @@ will the number of districts remain the same or will they increase.
 ;
 
 proc sql;
-	select year, count(district) as Total_Districts
+	select year "Year", count(district) as Total_Districts "Total Districts" format comma12.
 	from grads1314_raw_sorted
 	union
 	select year, count(district) as Total_Districts
