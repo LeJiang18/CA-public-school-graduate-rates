@@ -46,7 +46,7 @@ footnote2
 ; 
 
 footnote3
-'Los Angeles and Orange County has the highest number of graduates in both academic years starting from 894 and going up to 1070.'
+'Los Angeles and Orange County has the highest number of graduates in both academic years starting from 894 and going up to 1070,The LA County and Orange County have the most graduated maybe due to the strong academic polices they have in place compared to other districts.'
 ;
 
 *
@@ -79,10 +79,11 @@ proc print
     	school='School'
      	county='County'
      	district='District'
+	year='Year'
    	total='Total number of graduates'
     ;
     format
-    	total comma12.2
+    	total comma12.
     ;
 run;
 
@@ -129,10 +130,20 @@ will the number of districts remain the same or will they increase.
 ;
 
 proc sql;
-	select count(district) as Total_Districts_2013_2014
-	from grads1314_raw_sorted;
-	select count(district) as Total_Districts_2014_2015
+	select year, count(district) as Total_Districts
+	from grads1314_raw_sorted
+	union
+	select year, count(district) as Total_Districts
 	from grads1415_raw_sorted;
+	;
+	 label
+    	district='District'
+	year='Year'
+   	Total_Districts='Total number of Districts'
+    ;
+    format
+    	total comma12.
+    ;
 quit;
 
 title;
@@ -152,13 +163,16 @@ title2
 ;
 
 footnote1
-'Los Angeles Unified Alternative Education has the highest number of not reported students 248 based on their race.'
+'in the 2013-14 academic year Los Angeles United Alternative Education had 248 number of students not reported and in the 2014-15 academic year Muir charter had 56..'
 ;
 
 footnote2
 'This reveals that Los Angeles Unified Alternative Education has to be more hard working in finding out the nationality of students in order to be more diverse in their teaching and learn their culture to be more understanding their needs.'
 ;
 
+footnote3
+'The reason for this could be that some students don't want to disclose their race or they do not identify with the races listed as options for them to chose from .'
+;
 
 *
 Note: This lists the school which has the maximum number
@@ -179,9 +193,14 @@ interview the students to determine their nationality.
 ;
 
 proc sql;
-	select school, not_reported from mt12 
+	select year, school, not_reported from grads1314_raw_sorted 
 	where not_reported=(select max(not_reported)
-	from mt12);
+	from grads1314_raw_sorted) union 
+	select year, school, not_reported from grads1415_raw_sorted 
+	where not_reported=(select max(not_reported)
+	from grads1415_raw_sorted);
+	
+	
 quit;
 
 title;
