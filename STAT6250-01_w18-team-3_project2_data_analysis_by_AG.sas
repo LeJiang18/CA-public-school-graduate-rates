@@ -171,7 +171,7 @@ footnote2
 ;
 
 footnote3
-'The reason for this could be that some students don't want to disclose their race or they donnot identify with the races listed as options for them to chose from .'
+'The reason for this could be that some students donot want to disclose their race or they donnot identify with the races listed as options for them to chose from .'
 ;
 
 *
@@ -198,7 +198,8 @@ proc sql;
 	from grads1314_raw_sorted) union 
 	select year, school, not_reported from grads1415_raw_sorted 
 	where not_reported=(select max(not_reported)
-	from grads1415_raw_sorted);
+	from grads1415_raw_sorted)
+	;
 		
 quit;
 
