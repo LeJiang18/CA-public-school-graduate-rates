@@ -131,7 +131,8 @@ will the number of districts remain the same or will they increase.
 ;
 
 proc sql;
-	select year "Year", count(district) as Total_Districts "Total Districts" format comma12.
+	select year "Year", count(district) as Total_Districts 
+	"Total Districts" format comma12.
 	from grads1314_raw_sorted
 	union
 	select year, count(district) as Total_Districts
@@ -188,7 +189,8 @@ interview the students to determine their nationality.
 ;
 
 proc sql;
-	select year "Year", school "School", not_reported "Not reported" from grads1314_raw_sorted 
+	select year "Year", school "School", not_reported "Not reported"
+	from grads1314_raw_sorted 
 	where not_reported=(select max(not_reported)
 	from grads1314_raw_sorted) union 
 	select year, school, not_reported from grads1415_raw_sorted 
